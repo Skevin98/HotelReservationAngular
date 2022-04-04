@@ -1,0 +1,27 @@
+
+    <div ngbDropdown autoClose="outside" class="d-inline-block" placement="bottom-right"  >
+      <button class="btn btn-outline-primary" data-toggle="button" id="dropdownForm1" ngbDropdownToggle >Connexion</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="connexionMenu">
+        <form class="px-4 py-3">
+          <div class="mb-3">
+            <label for="exampleDropdownFormEmail1">Email</label>
+            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="exampleDropdownFormPassword1">Mot de passe</label>
+            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password" autocomplete="current-password">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+            <label class="form-check-label" for="dropdownCheck">
+              Se rappeler de moi
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <button ngbDropdownItem>Pas encore de compte ? Creer un compte</button>
+        <button ngbDropdownItem>Mot de passe oublié ?</button>
+      </div>
+    </div>
+
