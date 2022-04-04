@@ -1,0 +1,64 @@
+<div background="black">
+  <ngb-carousel *ngIf="images">
+  <ng-template ngbSlide >
+    <div class="picsum-img-wrapper">
+      <img [src]="images[0]" alt="first slide" class="w-100" >
+    </div>
+    <div class="carousel-caption">
+      <h3>Cadre iddyllique</h3>
+      <p>Pour un séjour de rêve</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[1]" alt="second slide" class="w-100">
+    </div>
+    <div class="carousel-caption">
+      <h3>Confort assurée</h3>
+      <p>Votre satisfaction, notre mission</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[2]"  alt="third slide"  class="w-100">
+    </div>
+    <div class="carousel-caption">
+      <h3>Lieu de détente</h3>
+      <p>En famille ou entre ami(e)s</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[3]" alt="fourth slide" class="w-100">
+    </div>
+    <div class="carousel-caption">
+      <h3>Restauration 5 étoiles</h3>
+      <p>Haute gastronomie et diversité</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+</div>
+
+
+<nav mat-tab-nav-bar  [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let link of navLinks"
+  [routerLink]="link.link"
+  routerLinkActive ="active" #rla="routerLinkActive"
+  [active]="rla.isActive"> {{link.label}} </a>
+
+  <app-connexion></app-connexion>
+
+</nav>
+
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+
+
+
+
+
+
+
+
+
+

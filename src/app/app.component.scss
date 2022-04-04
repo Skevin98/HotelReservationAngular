@@ -1,0 +1,21 @@
+
+.header
+{
+  padding: 0 0;
+}
+
+
+.d-inline-block {
+  position: relative;
+  height: 5rem;
+  background-color: white;
+  z-index: 1;
+  left:20%;
+  border: solid 1px green;
+  border-radius:20%;
+  padding:5%;
+}
+
+.connexionMenu{
+  position:absolute;
+}
