@@ -1,4 +1,4 @@
-<div background="black">
+<div background="black" id="carousel">
   <ngb-carousel *ngIf="images">
   <ng-template ngbSlide >
     <div class="picsum-img-wrapper">
@@ -40,13 +40,13 @@
 </div>
 
 
-<nav mat-tab-nav-bar  [tabPanel]="tabPanel">
+<nav mat-tab-nav-bar id="navbar"  [tabPanel]="tabPanel">
   <a mat-tab-link *ngFor="let link of navLinks"
   [routerLink]="link.link"
   routerLinkActive ="active" #rla="routerLinkActive"
   [active]="rla.isActive"> {{link.label}} </a>
 
-  <app-connexion></app-connexion>
+  <app-connexion id="connexion"></app-connexion>
 
 </nav>
 

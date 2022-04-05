@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  Roles: any = ['Admin', 'Author', 'Reader'];
+
   constructor() { }
 
   ngOnInit(): void {
