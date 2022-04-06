@@ -43,8 +43,7 @@
 <nav mat-tab-nav-bar id="navbar"  [tabPanel]="tabPanel">
   <a mat-tab-link *ngFor="let link of navLinks"
   [routerLink]="link.link"
-  routerLinkActive ="active" #rla="routerLinkActive"
-  [active]="rla.isActive"> {{link.label}} </a>
+  routerLinkActive ="active" > {{link.label}} </a>
 
   <app-connexion id="connexion"></app-connexion>
 

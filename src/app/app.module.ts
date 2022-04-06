@@ -12,6 +12,7 @@ import { ConnexionComponent } from './header/connexion/connexion.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     ConnexionComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'home' },
+      { path: 'reservation', component: ReservationComponent },
       { path: 'home', component: HomeComponent },
       { path: 'inscription', component: SignupComponent }
 

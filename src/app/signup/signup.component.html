@@ -6,37 +6,41 @@
     <form class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nom">
+          <input matInput type="text" placeholder="Nom">
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Prenom">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Telephone">
+          <input matInput type="tel" placeholder="Telephone">
         </mat-form-field>
+
+
         <mat-form-field class="example-full-width">
           <mat-label>Sexe</mat-label>
           <mat-select>
-            <mat-option value="Masculin">Masculin
+            <mat-option value="M">Masculin
             </mat-option>
-            <mat-option value="Masculin">Féminin
+            <mat-option value="F">Féminin
             </mat-option>
-            <mat-option value="Masculin">Non précisé
+            <mat-option value="N">Non précisé
             </mat-option>
           </mat-select>
         </mat-form-field>
+
+
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
+          <input placeholder="Email">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Mot de passe">
+          <input type="password" placeholder="Mot de passe">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Confirmer le mot de passe">
+          <input matInput type="password" placeholder="Confirmer le mot de passe">
         </mat-form-field>
 
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
+      <button mat-stroked-button color="accent" class="btn-block">Valider</button>
     </form>
   </mat-card>
 </div>

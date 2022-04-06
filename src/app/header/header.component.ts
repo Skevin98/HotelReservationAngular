@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
             index: 0
         }, {
             label: 'Reservations',
-            link: 'inscription',
+            link: 'reservation',
             index: 1
         }
     ];

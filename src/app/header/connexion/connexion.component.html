@@ -1,5 +1,5 @@
 
-    <div ngbDropdown class="d-inline-block" placement="bottom-right"  >
+    <div ngbDropdown class="d-inline-block" placement="right"  >
       <button class="btn btn-outline-primary" data-toggle="button" id="dropdownForm1" ngbDropdownToggle >Connexion</button>
       <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="connexionMenu">
         <form class="px-4 py-3">
@@ -20,7 +20,7 @@
           <button type="submit" class="btn btn-primary">Se connecter</button>
         </form>
         <div class="dropdown-divider"></div>
-        <button ngbDropdownItem>Pas encore de compte ? Creer un compte</button>
+        <button ngbDropdownItem routerLink="inscription">Pas encore de compte ? Creer un compte</button>
         <button ngbDropdownItem>Mot de passe oublié ?</button>
       </div>
     </div>
