@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { CollapseModule } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-header',

@@ -29,11 +29,18 @@
         </mat-form-field>
 
 
+
+        <mat-form-field  appearance="fill">
+          <mat-label>Patient</mat-label>
+          <input matInput [placeholder]="'Rechercher un patient'">
+      </mat-form-field>
+
+      <div class="mb-3">
+        <label for="exampleDropdownFormEmail1">Email</label>
+        <input type="email" class="form-control" id="mail" required placeholder="email@example.com" autocomplete="email">
+      </div>
         <mat-form-field class="example-full-width">
-          <input placeholder="Email">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input type="password" placeholder="Mot de passe">
+          <input matInput type="password" placeholder="Mot de passe">
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <input matInput type="password" placeholder="Confirmer le mot de passe">

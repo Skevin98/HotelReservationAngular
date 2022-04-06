@@ -40,16 +40,75 @@
 </div>
 
 
-<nav mat-tab-nav-bar id="navbar"  [tabPanel]="tabPanel">
-  <a mat-tab-link *ngFor="let link of navLinks"
-  [routerLink]="link.link"
-  routerLinkActive ="active" > {{link.label}} </a>
 
-  <app-connexion id="connexion"></app-connexion>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid" id="navbar">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
 
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="../../assets/logos/favpng_hotel-icon-travel-icon-resort-icon.png"
+          height="30"
+          alt="Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let link of navLinks" >
+          <a class="nav-link" [routerLink]="link.link" routerLinkActive="active">{{link.label}}</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center" >
+
+
+      <div>
+
+        <app-connexion></app-connexion>
+      </div>
+
+
+
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
 </nav>
 
-<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -7,12 +7,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 
 
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './header/connexion/connexion.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ChambresComponent } from './chambres/chambres.component';
+import { SingleReservationComponent } from './single-reservation/single-reservation.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +26,12 @@ import { ReservationComponent } from './reservation/reservation.component';
     ConnexionComponent,
     SignupComponent,
     HomeComponent,
-    ReservationComponent
+    ReservationComponent,
+    ChambresComponent,
+    SingleReservationComponent
   ],
   imports: [
+    MDBBootstrapModule.forRoot(),
     BrowserModule,
     AngularMaterialModule,
     FormsModule,
@@ -35,7 +43,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 
     ]),
     NgbModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
