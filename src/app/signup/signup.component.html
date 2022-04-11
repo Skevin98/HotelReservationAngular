@@ -1,53 +1,114 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Créer un compte</mat-card-title>
-    </mat-card-header>
-    <form class="example-form">
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Nom">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Prenom">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput type="tel" placeholder="Telephone">
-        </mat-form-field>
+<br/>
+
+<h1>Créer un compte</h1>
+
+<br/>
+
+<form>
 
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Sexe</mat-label>
-          <mat-select>
-            <mat-option value="M">Masculin
-            </mat-option>
-            <mat-option value="F">Féminin
-            </mat-option>
-            <mat-option value="N">Non précisé
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+  <!-- last name input -->
+  <mdb-form-control>
+    <input required mdbInput type="text" id="form1Example1" class="form-control" />
+    <label mdbLabel class="form-label" for="form1Example1">Nom*</label>
+  </mdb-form-control>
+
+  <br/>
+
+  <!-- first name input -->
+  <mdb-form-control>
+    <input mdbInput type="text" id="form1Example2" class="form-control" />
+    <label mdbLabel class="form-label" for="form1Example2">Prénom*</label>
+  </mdb-form-control>
+
+  <br/>
+
+  <!-- age input -->
+  <mdb-form-control>
+    <input mdbInput type="number" id="form1Example3" class="form-control"  />
+    <label mdbLabel class="form-label" for="form1Example3">Age*</label>
+  </mdb-form-control>
+
+  <br/>
+
+  <!-- Email input -->
+  <mdb-form-control>
+    <input mdbInput  type="email" id="form1Example4" class="form-control" />
+    <label mdbLabel class="form-label" for="form1Example4">Email*</label>
+  </mdb-form-control>
+
+  <br/>
+
+  <!-- tel input -->
+  <mdb-form-control>
+    <input mdbInput type="tel" id="form1Example5" class="form-control" />
+    <label mdbLabel class="form-label" for="form1Example5">Téléphone</label>
+  </mdb-form-control>
 
 
+  <br/>
 
-        <mat-form-field  appearance="fill">
-          <mat-label>Patient</mat-label>
-          <input matInput [placeholder]="'Rechercher un patient'">
-      </mat-form-field>
+  <!-- Password input -->
+  <mdb-form-control>
+    <input mdbInput type="password" id="form1Example5" class="form-control"  />
+    <label mdbLabel class="form-label" for="form1Example5">Mot de passe*</label>
+  </mdb-form-control>
 
-      <div class="mb-3">
-        <label for="exampleDropdownFormEmail1">Email</label>
-        <input type="email" class="form-control" id="mail" required placeholder="email@example.com" autocomplete="email">
+  <br/>
+
+  <!-- Password input -->
+  <mdb-form-control>
+    <input mdbInput type="password" id="form1Example6" class="form-control"  />
+    <label mdbLabel class="form-label" for="form1Example6">Confirmer le mot de passe*</label>
+  </mdb-form-control>
+
+  <br/>
+
+
+  <!-- 2 column grid layout for inline styling -->
+  <div>
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input mdbCheckbox 
+        class="form-check-input" 
+        type="checkbox" 
+        value="" 
+        id="form1Example7" />
+        <label 
+        class="form-check-label" 
+        for="form1Example7"> Se rappeler de moi </label>
       </div>
-        <mat-form-field class="example-full-width">
-          <input matInput type="password" placeholder="Mot de passe">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput type="password" placeholder="Confirmer le mot de passe">
-        </mat-form-field>
+      <div class="form-check">
+        <input mdbCheckbox 
+        class="form-check-input" 
+        type="checkbox" 
+        value="" 
+        id="form1Example8" />
+        <label  
+        class="form-check-label" 
+        for="form1Example8"> S'abonner à la newlestter </label>
+      </div>
 
-      </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Valider</button>
-    </form>
-  </mat-card>
-</div>
+      
+
+      <div class="form-check">
+        <input mdbCheckbox 
+        class="form-check-input" 
+        type="checkbox" 
+        value="" 
+        id="form1Example9" required />
+        <label 
+        class="form-check-label" 
+        for="form1Example9"> J'accepte la politique de sécurité </label>
+      </div>
+    </div>
+
+  </div>
+
+  <br/>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-secondary">Créer un compte</button>
+</form>
+

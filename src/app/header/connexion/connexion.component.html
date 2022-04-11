@@ -1,7 +1,7 @@
 
-    <div ngbDropdown display="dynamic" class="d-inline-block" ngbTooltip="I'll always open to the right" placement="left"  >
-      <button class="btn btn-outline-primary" data-toggle="button" id="dropdownForm1" ngbDropdownToggle >Connexion</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="connexionMenu">
+<!--     <div ngbDropdown display="dynamic" class="d-inline-block" placement="left"  >
+      <button class="btn btn-outline-secondary" data-toggle="button" id="dropdownForm1" ngbDropdownToggle >Connexion</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="connexionMenu" class="dropdown-menu dropdown-menu-end">
         <form class="px-4 py-3">
           <div class="mb-3">
             <label for="exampleDropdownFormEmail1">Email</label>
@@ -10,18 +10,74 @@
           <div class="mb-3">
             <label for="exampleDropdownFormPassword1">Mot de passe</label>
             <input type="password" class="form-control" id="exampleDropdownFormPassword1" required placeholder="Mot de passe" autocomplete="current-password">
-          </div>
+          </div> 
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="dropdownCheck">
             <label class="form-check-label" for="dropdownCheck">
               Se rappeler de moi
             </label>
           </div>
-          <button type="submit" class="btn btn-primary">Se connecter</button>
+          <button type="submit" class="btn btn-outline-secondary">Se connecter</button>
         </form>
         <div class="dropdown-divider"></div>
         <button ngbDropdownItem routerLink="inscription">Pas encore de compte ? Creer un compte</button>
         <button ngbDropdownItem>Mot de passe oublié ?</button>
+      </div>
+    </div> -->
+
+
+    <div mdbDropdown class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        mdbDropdownToggle
+        aria-expanded="false"
+      >
+        Connexion
+      </button>
+      <div mdbDropdownMenu class="dropdown-menu">
+        <form class="px-4 py-3">
+          <!-- Email input -->
+          <mdb-form-control>
+            <input mdbInput type="email" id="form1Example10" class="form-control" />
+            <label mdbLabel class="form-label" for="form1Example10">Adresse mail</label>
+          </mdb-form-control>
+
+          <br/>
+
+          <!-- Password input -->
+          <mdb-form-control>
+            <input type="password" id="form1Example2" class="form-control" />
+            <label class="form-label" for="form1Example2">Mot de passe</label>
+          </mdb-form-control>
+
+          <br/>
+          <!-- 2 column grid layout for inline styling -->
+          <div class="row mb-4 col d-flex justify-content-center">
+            <div class="">
+              <!-- Checkbox -->
+              <div class="form-check">
+                <input mdbCheckbox 
+                class="form-check-input" 
+                type="checkbox" 
+                value="" 
+                id="form1Example7" />
+                <label 
+                class="form-check-label" 
+                for="form1Example7"> Se rappeler de moi </label>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Simple link -->
+              <a href="#!">Mot de passe oublié ?</a>
+            </div>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-outline-secondary btn-block">Se connecter</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <a type="button" class="dropdown-item" routerLink="inscription">Vous n'avez pas de compte? Créer un compte</a>
+
       </div>
     </div>
 

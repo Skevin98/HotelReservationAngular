@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CollapseModule } from 'angular-bootstrap-md';
+
 
 @Component({
   selector: 'app-header',
@@ -25,10 +25,14 @@ export class HeaderComponent implements OnInit {
             link: 'home',
             index: 0
         }, {
-            label: 'Reservations',
+            label: 'Mes reservations',
             link: 'reservation',
             index: 1
-        }
+        }, {
+          label: 'Mon profil',
+          link: 'profil',
+          index: 1
+      }
     ];
   }
 

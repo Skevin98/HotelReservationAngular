@@ -1,43 +1,54 @@
-<div background="black" id="carousel">
-  <ngb-carousel *ngIf="images">
-  <ng-template ngbSlide >
-    <div class="picsum-img-wrapper">
-      <img [src]="images[0]" alt="first slide" class="w-100" >
-    </div>
-    <div class="carousel-caption">
-      <h3>Cadre iddyllique</h3>
+<mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'" *ngIf="images">
+  <mdb-carousel-item>
+    <img
+      [src]="images[0]"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Cadre iddyllique</h5>
       <p>Pour un séjour de rêve</p>
     </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[1]" alt="second slide" class="w-100">
-    </div>
-    <div class="carousel-caption">
-      <h3>Confort assurée</h3>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      [src]="images[1]"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Confort assurée</h5>
       <p>Votre satisfaction, notre mission</p>
     </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[2]"  alt="third slide"  class="w-100">
-    </div>
-    <div class="carousel-caption">
-      <h3>Lieu de détente</h3>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      [src]="images[2]"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Lieu de détente</h5>
       <p>En famille ou entre ami(e)s</p>
     </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="images[3]" alt="fourth slide" class="w-100">
-    </div>
-    <div class="carousel-caption">
-      <h3>Restauration 5 étoiles</h3>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      [src]="images[3]"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Restauration 5 étoiles</h5>
       <p>Haute gastronomie et diversité</p>
     </div>
-  </ng-template>
-</ngb-carousel>
-</div>
+  </mdb-carousel-item>
+  
+
+</mdb-carousel>
+
+
+
 
 
 
@@ -45,12 +56,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid" id="navbar">
   <!-- Container wrapper -->
   <div class="container-fluid">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand mt-2 mt-lg-0" href="#">
+      <img
+        src="../../assets/logos/favpng_hotel-icon-travel-icon-resort-icon.png"
+        height="30"
+        alt="Logo"
+        loading="lazy"
+      />
+    </a>
+
     <!-- Toggle button -->
     <button
       class="navbar-toggler"
       type="button"
       data-mdb-toggle="collapse"
       data-mdb-target="#navbarSupportedContent"
+      (click)="basicNavbar.toggle()"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -59,20 +82,15 @@
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <img
-          src="../../assets/logos/favpng_hotel-icon-travel-icon-resort-icon.png"
-          height="30"
-          alt="Logo"
-          loading="lazy"
-        />
-      </a>
+    <div mdbCollapse 
+    class="collapse navbar-collapse" 
+    id="navbarSupportedContent"
+    #basicNavbar="mdbCollapse">
+      
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngFor="let link of navLinks" >
-          <a class="nav-link" [routerLink]="link.link" routerLinkActive="active">{{link.label}}</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="link.link" routerLinkActive="active">{{link.label}}</a>
         </li>
       </ul>
       <!-- Left links -->
@@ -86,6 +104,7 @@
       <div>
 
         <app-connexion></app-connexion>
+        
       </div>
 
 
