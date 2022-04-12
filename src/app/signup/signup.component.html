@@ -1,6 +1,12 @@
 <br/>
 
-<h1>Créer un compte</h1>
+<h1 class="mx-2">Créer un compte</h1>
+
+<br/>
+
+<div>
+  <label class="lead mx-2">Veuillez entrer les informations requises : <span style="color:red">(*) Champ Obligatoire</span></label>
+</div>
 
 <br/>
 
@@ -8,15 +14,15 @@
 
 
   <!-- last name input -->
-  <mdb-form-control>
-    <input required mdbInput type="text" id="form1Example1" class="form-control" />
+  <mdb-form-control class="mx-2">
+    <input required mdbInput type="text" id="form1Example1" class="form-control" required/>
     <label mdbLabel class="form-label" for="form1Example1">Nom*</label>
   </mdb-form-control>
 
   <br/>
 
   <!-- first name input -->
-  <mdb-form-control>
+  <mdb-form-control class="mx-2">
     <input mdbInput type="text" id="form1Example2" class="form-control" />
     <label mdbLabel class="form-label" for="form1Example2">Prénom*</label>
   </mdb-form-control>
@@ -24,24 +30,77 @@
   <br/>
 
   <!-- age input -->
-  <mdb-form-control>
-    <input mdbInput type="number" id="form1Example3" class="form-control"  />
+  <mdb-form-control class="mx-2">
+    <input mdbInput type="number" id="form1Example3" class="form-control" required  />
     <label mdbLabel class="form-label" for="form1Example3">Age*</label>
   </mdb-form-control>
 
   <br/>
 
+
+
+
+  <fieldset>
+    <p class="text-muted mx-2">Sexe</p>
+    <div class="form-check mx-2">
+      <input
+        mdbRadio
+        class="form-check-input"
+        type="radio"
+        name="flexRadioDefault"
+        id="flexRadioDefault1"
+      />
+      <label class="form-check-label" for="flexRadioDefault1"> Masculin </label>
+    </div>
+    <div class="form-check mx-2">
+      <input
+        mdbRadio
+        class="form-check-input"
+        type="radio"
+        name="flexRadioDefault"
+        id="flexRadioDefault2"
+
+      />
+      <label class="form-check-label" for="flexRadioDefault2"> Féminin </label>
+    </div>
+
+    <div class="form-check mx-2">
+      <input
+        mdbRadio
+        class="form-check-input"
+        type="radio"
+        name="flexRadioDefault"
+        id="flexRadioDefault3"
+        [checked]="true"
+      />
+      <label class="form-check-label" for="flexRadioDefault3"> Ne pas spécifier </label>
+    </div>
+  </fieldset>
+
+
+
+  <br/>
+
+
+  <!-- address input -->
+  <mdb-form-control class="mx-2">
+    <input mdbInput type="text" id="form1Adresse" class="form-control"  />
+    <label mdbLabel class="form-label" for="form1Adresse">Adresse</label>
+  </mdb-form-control>
+
+  <br/>
+
   <!-- Email input -->
-  <mdb-form-control>
-    <input mdbInput  type="email" id="form1Example4" class="form-control" />
+  <mdb-form-control class="mx-2">
+    <input mdbInput  type="email" id="form1Example4" class="form-control" required/>
     <label mdbLabel class="form-label" for="form1Example4">Email*</label>
   </mdb-form-control>
 
   <br/>
 
   <!-- tel input -->
-  <mdb-form-control>
-    <input mdbInput type="tel" id="form1Example5" class="form-control" />
+  <mdb-form-control class="mx-2">
+    <input mdbInput type="tel" id="form1Example5" class="form-control" required/>
     <label mdbLabel class="form-label" for="form1Example5">Téléphone</label>
   </mdb-form-control>
 
@@ -49,16 +108,16 @@
   <br/>
 
   <!-- Password input -->
-  <mdb-form-control>
-    <input mdbInput type="password" id="form1Example5" class="form-control"  />
+  <mdb-form-control class="mx-2">
+    <input mdbInput type="password" id="form1Example5" class="form-control" required />
     <label mdbLabel class="form-label" for="form1Example5">Mot de passe*</label>
   </mdb-form-control>
 
   <br/>
 
   <!-- Password input -->
-  <mdb-form-control>
-    <input mdbInput type="password" id="form1Example6" class="form-control"  />
+  <mdb-form-control class="mx-2">
+    <input mdbInput type="password" id="form1Example6" class="form-control" required />
     <label mdbLabel class="form-label" for="form1Example6">Confirmer le mot de passe*</label>
   </mdb-form-control>
 
@@ -67,39 +126,40 @@
 
   <!-- 2 column grid layout for inline styling -->
   <div>
-    <div class="col d-flex justify-content-center">
+    <div class="d-flex flex-column justify-content-between">
       <!-- Checkbox -->
-      <div class="form-check">
-        <input mdbCheckbox 
-        class="form-check-input" 
-        type="checkbox" 
-        value="" 
+      <div class="form-check mx-2" >
+        <input mdbCheckbox
+        class="form-check-input"
+        type="checkbox"
+        value=""
         id="form1Example7" />
-        <label 
-        class="form-check-label" 
+        <label
+        class="form-check-label"
         for="form1Example7"> Se rappeler de moi </label>
       </div>
-      <div class="form-check">
-        <input mdbCheckbox 
-        class="form-check-input" 
-        type="checkbox" 
-        value="" 
+
+      <div class="form-check mx-2">
+        <input mdbCheckbox
+        class="form-check-input"
+        type="checkbox"
+        value=""
         id="form1Example8" />
-        <label  
-        class="form-check-label" 
+        <label
+        class="form-check-label"
         for="form1Example8"> S'abonner à la newlestter </label>
       </div>
 
-      
 
-      <div class="form-check">
-        <input mdbCheckbox 
-        class="form-check-input" 
-        type="checkbox" 
-        value="" 
+
+      <div class="form-check mx-2">
+        <input mdbCheckbox
+        class="form-check-input"
+        type="checkbox"
+        value=""
         id="form1Example9" required />
-        <label 
-        class="form-check-label" 
+        <label
+        class="form-check-label"
         for="form1Example9"> J'accepte la politique de sécurité </label>
       </div>
     </div>
@@ -109,6 +169,6 @@
   <br/>
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-secondary">Créer un compte</button>
+  <button type="submit" class="btn btn-secondary mx-2 mb-1" routerLink="profil">Créer un compte</button>
 </form>
 

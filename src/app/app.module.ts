@@ -6,12 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './header/connexion/connexion.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ReservationComponent } from './reservation/reservation.component';
+
 
 import { ChambresComponent } from './chambres/chambres.component';
 import { SingleReservationComponent } from './single-reservation/single-reservation.component';
@@ -34,6 +34,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { DetailChambreComponent } from './detail-chambre/detail-chambre.component';
 import { DetailReservationComponent } from './detail-reservation/detail-reservation.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
     ProfilComponent,
     DetailChambreComponent,
     DetailReservationComponent,
-    CreateReservationComponent
+    CreateReservationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
       { path: 'reservation', component: ReservationComponent },
       { path: 'home', component: HomeComponent },
       { path: 'inscription', component: SignupComponent },
+      {path: 'chambres', component: ChambresComponent },
       { path: 'profil', component: ProfilComponent }
 
     ]),
