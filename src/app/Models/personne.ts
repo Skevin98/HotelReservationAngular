@@ -2,7 +2,7 @@ export class Personne {
 
 
   constructor() {
-    Personne.nombre++;
+
 	}
 
 
@@ -86,12 +86,6 @@ export class Personne {
     this._privilege = value;
   }
 
-    private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Personne._nombre;
-  }
-  public static set nombre(value: number) {
-    Personne._nombre = value;
-  }
+
 
 }

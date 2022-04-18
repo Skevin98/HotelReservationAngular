@@ -1,1 +1,48 @@
-<p>reservation works!</p>
+<br>
+
+<div class="text-center" hidden>
+  <h3>
+    Veuillez vous connecter afin de voir vos reservations.
+  </h3>
+
+</div>
+
+
+<div class="text-center" *ngIf="!reservations.length" >
+  <h3>
+    Aucune reservation.
+  </h3>
+
+</div>
+
+<div *ngIf="reservations.length">
+  <table class="table table-striped table-hover text-center px-2">
+    <thead>
+      <tr>
+
+        <th scope="col">#</th>
+        <th scope="col">Date d'enregistrement</th>
+        <th scope="col">Date d'arrivée</th>
+        <th scope="col">Date de sortie</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of reservations">
+        <th scope="row">{{res._idReservation}}</th>
+        <td>{{res._dateReservation}}</td>
+        <td>{{res._dateEntree}}</td>
+        <td>{{res._dateSortie}}</td>
+        <td class="gx-5">
+          <a class="btn btn-info mx-2">Voir</a>
+          <a class="btn btn-primary mx-2">Modifier</a>
+          <a class="btn btn-danger mx-2">Supprimer</a>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>

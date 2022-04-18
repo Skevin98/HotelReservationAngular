@@ -1,7 +1,7 @@
 export class Categorie {
 
 	constructor() {
-    Categorie._nombre++;
+
 	}
   
 
@@ -49,12 +49,6 @@ export class Categorie {
     this._description = value;
   }
 
-  private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Categorie._nombre;
-  }
-  public static set nombre(value: number) {
-    Categorie._nombre = value;
-  }
+
 
 }

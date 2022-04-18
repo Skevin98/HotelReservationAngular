@@ -9,7 +9,7 @@ export class Chambre {
    *
    */
   constructor() {
-    Chambre.nombre++;
+
    }
 
     private _idChambre: string = "";
@@ -60,13 +60,6 @@ export class Chambre {
     this._lits = value;
   }
    
-    private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Chambre._nombre;
-  }
-  public static set nombre(value: number) {
-    Chambre._nombre = value;
-  }
 
   
 

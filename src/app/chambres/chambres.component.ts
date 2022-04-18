@@ -1,3 +1,5 @@
+import { Chambre } from './../Models/chambre';
+import { ChambreService } from './../Services/chambre.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './chambres.component.html',
   styleUrls: ['./chambres.component.scss']
 })
-export class ChambresComponent implements OnInit {
+export class ChambresComponent implements OnInit  {
 
-  constructor() { }
+  ch:any[]=[];
 
+
+  constructor(private chambreService :ChambreService) {
+
+   }
   ngOnInit(): void {
+    this.ch = this.chambreService.Chambres;
   }
+
+
 
 }

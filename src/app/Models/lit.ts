@@ -3,7 +3,6 @@ export class Lit {
 
 	constructor() {
 
-    Lit._nombre++;
 	}
   
   
@@ -23,12 +22,6 @@ export class Lit {
     this._nb_places = value;
   }
 
-  private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Lit._nombre;
-  }
-  public static set nombre(value: number) {
-    Lit._nombre = value;
-  }
+
 
 }

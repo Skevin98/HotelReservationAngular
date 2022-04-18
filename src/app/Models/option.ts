@@ -4,7 +4,6 @@ export class Option {
    *
    */
   constructor() { 
-    Option.nombre++;
    }
 
   private _idOption: string = "";
@@ -40,13 +39,6 @@ export class Option {
     this._hasCuisine = value;
   }
   
-  private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Option._nombre;
-  }
-  public static set nombre(value: number) {
-    Option._nombre = value;
-  }
 
 
 }

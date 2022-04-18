@@ -5,7 +5,6 @@ export class Reservation {
 
 	constructor() {
 
-    Reservation._nombre++;
 	}
 
 
@@ -72,13 +71,6 @@ export class Reservation {
   public set montant(value: number) {
     this._montant = value;
   }
-  
-  private static _nombre: number = 0;
-  public static get nombre(): number {
-    return Reservation._nombre;
-  }
-  public static set nombre(value: number) {
-    Reservation._nombre = value;
-  }
+
 
 }

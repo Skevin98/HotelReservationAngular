@@ -35,6 +35,7 @@ import { DetailChambreComponent } from './detail-chambre/detail-chambre.componen
 import { DetailReservationComponent } from './detail-reservation/detail-reservation.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { FooterComponent } from './footer/footer.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +51,15 @@ import { FooterComponent } from './footer/footer.component';
     DetailChambreComponent,
     DetailReservationComponent,
     CreateReservationComponent,
-    FooterComponent
+    FooterComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
+      { path:'reservation/:id', component: DetailReservationComponent },
+      { path:'chambres/:id', component: DetailChambreComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'reservation', component: ReservationComponent },
       { path: 'home', component: HomeComponent },
