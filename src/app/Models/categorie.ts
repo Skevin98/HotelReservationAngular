@@ -3,14 +3,14 @@ export class Categorie {
 	constructor() {
 
 	}
-  
 
-  private _idCategorie: string = "";
-  public get idCategorie(): string {
-    return this._idCategorie;
+
+  private _id: string = "";
+  public get id(): string {
+    return this._id;
   }
-  public set idCategorie(value: string) {
-    this._idCategorie = value;
+  public set id(value: string) {
+    this._id = value;
   }
 
 
@@ -23,13 +23,6 @@ export class Categorie {
   }
 
 
-  private _nb_Chambres: number = 0;
-  public get nb_Chambres(): number {
-    return this._nb_Chambres;
-  }
-  public set nb_Chambres(value: number) {
-    this._nb_Chambres = value;
-  }
 
 
   private _tarif: number = 0;

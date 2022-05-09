@@ -14,8 +14,8 @@ export class SingleReservationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.reservation.idReservation="1";
-    this.reservation.chambres =new Chambre();
+    this.reservation.id="1";
+    this.reservation.chambre =new Chambre();
     this.reservation.dateReservation =new Date(2022,5,20);
     this.reservation.dateEntree=new Date(2022,7,15);
     this.reservation.dateSortie=new Date("30-09-2022");

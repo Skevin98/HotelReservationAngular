@@ -6,12 +6,39 @@ export class Personne {
 	}
 
 
-    private _idPersonne: string = "";
-  public get idPersonne(): string {
-    return this._idPersonne;
+    private _id: string = "";
+  public get id(): string {
+    return this._id;
   }
-  public set idPersonne(value: string) {
-    this._idPersonne = value;
+  public set id(value: string) {
+    this._id = value;
+  }
+
+
+
+  private _idFirebaseUser : string="";
+  public get idFirebaseUser() : string {
+    return this._idFirebaseUser;
+  }
+  public set idFirebaseUser(v : string) {
+    this._idFirebaseUser = v;
+  }
+
+
+  private _username : string="";
+  public get username() : string {
+    return this._username;
+  }
+  public set username(v : string) {
+    this._username = v;
+  }
+
+  private _password: string = "";
+  public get password(): string {
+    return this._password;
+  }
+  public set password(value: string) {
+    this._password = value;
   }
 
     private _nom: string = "";
@@ -30,6 +57,14 @@ export class Personne {
     this._prenom = value;
   }
 
+  private _adresse: string = "";
+  public get adresse(): string {
+    return this._adresse;
+  }
+  public set adresse(value: string) {
+    this._adresse = value;
+  }
+
     private _email: string = "";
   public get email(): string {
     return this._email;
@@ -46,14 +81,6 @@ export class Personne {
     this._telephone = value;
   }
 
-    private _mot_de_passe: string = "";
-  public get mot_de_passe(): string {
-    return this._mot_de_passe;
-  }
-  public set mot_de_passe(value: string) {
-    this._mot_de_passe = value;
-  }
-
   private _age: number = 0;
   public get age(): number {
     return this._age;
@@ -62,15 +89,7 @@ export class Personne {
     this._age = value;
   }
 
-  private _adresse: string = "";
-  public get adresse(): string {
-    return this._adresse;
-  }
-  public set adresse(value: string) {
-    this._adresse = value;
-  }
-
-    private _sexe: string = "";
+  private _sexe: string = "";
   public get sexe(): string {
     return this._sexe;
   }
@@ -78,7 +97,7 @@ export class Personne {
     this._sexe = value;
   }
 
-    private _privilege: string = "";
+    private _privilege: string = "User";
   public get privilege(): string {
     return this._privilege;
   }

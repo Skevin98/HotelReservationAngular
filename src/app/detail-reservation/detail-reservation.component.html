@@ -1,1 +1,82 @@
-<p>detail-reservation works!</p>
+<br/>
+
+<h1 class="mx-2">Détails de la réservation</h1>
+
+
+<br/>
+
+
+<table class="table px-2">
+
+  <tbody>
+
+    <tr>
+      <th scope="row">identifiant de la reservation</th>
+      <td>{{r.id}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Date de la reservation</th>
+      <td>{{r.dateReservation | date:' dd/MM/yyyy'}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Date d'arrivée</th>
+      <td>{{r.dateEntree | date:' dd/MM/yyyy '}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Date de sortie</th>
+      <td>{{r.dateSortie | date:' dd/MM/yyyy '}}</td>
+
+    </tr>
+    
+    
+    <tr>
+      <th scope="row">identifiant de l'utilisateur</th>
+      <td>{{r.personneID}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Nombre d'adultes</th>
+      <td>{{r.nb_Adults}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Nombre d'enfants</th>
+      <td>{{r.nb_Enfants}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">identifiant de la chambre</th>
+      <td>{{r.chambreID}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Type de la chambre</th>
+      <td>{{r.chambre.categorie.libelle}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Numéro de la chambre</th>
+      <td>{{r.chambre.numero}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Montant</th>
+      <td>{{r.montant}}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+
+<a class="btn btn-danger mx-2 mb-1" routerLink="/reservations" role="button">Retour aux réservations</a>

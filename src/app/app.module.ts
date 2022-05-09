@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
 
@@ -36,6 +36,8 @@ import { DetailReservationComponent } from './detail-reservation/detail-reservat
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -58,13 +60,15 @@ import { CategoriesComponent } from './categories/categories.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path:'reservation/:id', component: DetailReservationComponent },
-      { path:'chambres/:id', component: DetailChambreComponent },
+      { path: 'reservations', component: ReservationComponent },
+
+      { path:'reservations/:id', component: DetailReservationComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-      { path: 'reservation', component: ReservationComponent },
+
       { path: 'home', component: HomeComponent },
       { path: 'inscription', component: SignupComponent },
-      {path: 'chambres', component: ChambresComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path:'categories/:id', component: CreateReservationComponent },
       { path: 'profil', component: ProfilComponent }
 
     ]),
@@ -84,7 +88,11 @@ import { CategoriesComponent } from './categories/categories.component';
     MdbScrollspyModule,
     MdbTabsModule,
     MdbTooltipModule,
-    MdbValidationModule
+    MdbValidationModule,
+    
+    ReactiveFormsModule,
+
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,1 +1,134 @@
-<p>create-reservation works!</p>
+<br/>
+
+<h1 class="mx-2">Faire une reservation</h1>
+
+<br/>
+
+
+<div class="text-center" *ngIf="!Chambres.length" >
+  <h3>
+    Désolé. Aucune chambre de cette categorie disponible pour le moment.
+  </h3>
+  <br/>
+</div>
+
+  <div *ngIf="Chambres.length">
+    <div>
+      <label class="lead mx-2">Veuillez entrer les informations requises : <span style="color:red">(*) Champs Obligatoires</span></label>
+    </div>
+
+    <br/>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+
+
+      <!-- last name input -->
+      <mdb-form-control class="mx-2 form-group">
+        <input required mdbInput type="date" id="arrivee" [min]="date" [max]="Reservation.dateSortie" class="form-control" name="arrivee" required [(ngModel)]="Reservation.dateEntree"  (ngModelChange)="montant()"/>
+        <label mdbLabel class="form-label" for="arrive">Date d'arrivée</label>
+      </mdb-form-control>
+
+      <br/>
+
+      <!-- first name input -->
+      <mdb-form-control class="mx-2">
+        <input mdbInput type="date" id="depart" [min]="Reservation.dateEntree"  class="form-control" name="depart" required [(ngModel)]="Reservation.dateSortie"  (ngModelChange)="montant()"/>
+        <label mdbLabel class="form-label" for="depart">Date de départ</label>
+      </mdb-form-control>
+
+
+      <br/>
+
+      <div class="form-group mx-2">
+        <label for="chambres">Selectionner une chambre</label>
+        <select
+        name="chambres"
+        id="chambres"
+        class="form-control"
+        [(ngModel)]="idChambre"
+        (ngModelChange)="options()"
+        required>
+
+          <option *ngFor="let ch of Chambres" [ngValue]="ch.id">{{ch.id}}</option>
+        </select>
+      </div>
+
+
+    <br>
+
+      <fieldset [hidden]="activate">
+        <p class="text-muted mx-2">Options de cette chambre</p>
+        <div class="mx-2">
+
+          <label class="form-check-label" for="mer"
+          [ngClass]="{'list-group-item-success': Chambre.hasVue_sur_mer ,
+          'list-group-item-danger': !Chambre.hasVue_sur_mer }"> Vue sur mer</label>
+        </div>
+        <div class="mx-2">
+
+          <label class="form-check-label" for="balcon"
+          [ngClass]="{'list-group-item-success': Chambre.hasBalcon ,
+          'list-group-item-danger': !Chambre.hasBalcon }"> Balcon</label>
+        </div>
+
+        <div class="mx-2">
+
+          <label class="form-check-label" for="sejour"
+          [ngClass]="{'list-group-item-success': Chambre.hasSalle_sejour ,
+          'list-group-item-danger': !Chambre.hasSalle_sejour }"> Salle séjour </label>
+        </div>
+
+        <div class="mx-2">
+
+          <label class="form-check-label" for="cuisine"
+          [ngClass]="{'list-group-item-success': Chambre.hasCuisine ,
+          'list-group-item-danger': !Chambre.hasCuisine }"> Cuisine</label>
+        </div>
+        <div class="mx-2">
+
+
+          <label> Nombre de lits : {{Chambre.nbLits}} </label>
+        </div>
+      </fieldset>
+
+
+
+
+      <br/>
+
+      <!-- age input -->
+      <mdb-form-control class="mx-2">
+        <input mdbInput type="number" id="nbadult" min="0" max="5" class="form-control" name="nbadult" required [(ngModel)]="Reservation.nb_Adults" (ngModelChange)="montant()" />
+        <label mdbLabel class="form-label" for="nbadul">Nombre d'adultes</label>
+      </mdb-form-control>
+
+      <br/>
+
+      <mdb-form-control class="mx-2">
+        <input mdbInput type="number" id="nbenfant" min="0" max="5" class="form-control" name="nbenfant" required [(ngModel)]="Reservation.nb_Enfants" (ngModelChange)="montant()"/>
+        <label mdbLabel class="form-label" for="nbenfant">Nombre d'enfants</label>
+      </mdb-form-control>
+
+
+
+      <br/>
+
+      <mdb-form-control class="mx-2">
+        <input mdbInput type="number" name="montant" id="montant" class="form-control" disabled="true" />
+        <label mdbLabel class="form-label" for="montant">Prix de la reservation : {{Reservation.montant}}</label>
+      </mdb-form-control>
+
+      <br>
+
+      <!-- Submit button -->
+      <button type="submit"
+      class="btn btn-secondary mx-2 mb-1"
+ 
+      [disabled]="f.invalid">
+      Valider la reservation
+    </button>
+    </form>
+
+  </div>
+
+

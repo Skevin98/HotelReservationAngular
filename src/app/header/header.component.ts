@@ -22,11 +22,11 @@ export class HeaderComponent implements OnInit {
     this.navLinks = [
         {
             label: 'Nos chambres',
-            link: 'chambres',
+            link: 'categories',
             index: 0
         }, {
             label: 'Mes reservations',
-            link: 'reservation',
+            link: 'reservations',
             index: 1
         }
 

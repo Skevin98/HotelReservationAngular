@@ -1,0 +1,127 @@
+<br/>
+
+<h1 class="mx-2">Nos Catégories</h1>
+
+
+<br/>
+
+
+<div class="row justify-content-md-center gy-3">
+  <div class="col-5"  >
+    <div class="card" style="max-width : 500px; ">
+      <div class="bg-image hover-overlay ripple"
+      data-mdb-ripple-color="light"
+      style="height:235px; width : auto; max-width : 500px; ">
+        <img
+          src={{Images[0]}}
+          class="img-fluid"
+          alt="immage_room"
+        />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{Categories[0].libelle}}
+        </h5>
+        <p class="card-text">
+          {{Categories[0].description}}
+        </p>
+        <a [routerLink]="[Categories[0].id]" class="btn btn-secondary">Reserver</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-5"  >
+    <div class="card" style="max-width : 500px; ">
+      <div class="bg-image hover-overlay ripple"
+      data-mdb-ripple-color="light"
+      style="height:235px; width : auto; max-width : 500px; ">
+        <img
+          src={{Images[1]}}
+          class="img-fluid"
+          alt="immage_room"
+        />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{Categories[1].libelle}}
+        </h5>
+        <p class="card-text">
+          {{Categories[1].description}}
+        </p>
+        <a [routerLink]="[Categories[1].id]" class="btn btn-secondary">Reserver</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-100"></div>
+
+  <div class="col-sm-5"  >
+    <div class="card" style="max-width : 500px; ">
+      <div class="bg-image hover-overlay ripple"
+      data-mdb-ripple-color="light"
+      style="height:235px; width : auto; max-width : 500px; ">
+        <img
+          src={{Images[2]}}
+          class="img-fluid"
+          alt="immage_room"
+        />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{Categories[2].libelle}}
+        </h5>
+        <p class="card-text">
+          {{Categories[2].description}}
+        </p>
+        <a [routerLink]="[Categories[2].id]" class="btn btn-secondary">Reserver</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-5"  >
+    <div class="card" style="max-width : 500px; ">
+      <div class="bg-image hover-overlay ripple"
+      data-mdb-ripple-color="light"
+      style="height:235px; width : auto; max-width : 500px; ">
+        <img
+          src={{Images[3]}}
+          class="img-fluid"
+          alt="immage_room"
+        />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{Categories[3].libelle}}
+        </h5>
+        <p class="card-text">
+          {{Categories[3].description}}
+        </p>
+        <a [routerLink]="[Categories[3].id]"  class="btn btn-secondary">Reserver une chambre</a>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<br/>
+
+
+
+
+
+
+
