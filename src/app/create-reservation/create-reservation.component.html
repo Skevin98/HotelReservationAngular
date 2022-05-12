@@ -12,6 +12,8 @@
   <br/>
 </div>
 
+
+
   <div *ngIf="Chambres.length">
     <div>
       <label class="lead mx-2">Veuillez entrer les informations requises : <span style="color:red">(*) Champs Obligatoires</span></label>
@@ -119,6 +121,13 @@
       </mdb-form-control>
 
       <br>
+
+      <div class="text-center" >
+        <label class="lead mx-2">
+          <span style="color:red" [hidden]="indispo">Il existe déjà une reservation de cette chambre portant sur cette période.</span>
+        </label>
+        <br/>
+      </div>
 
       <!-- Submit button -->
       <button type="submit"

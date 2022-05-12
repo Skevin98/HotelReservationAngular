@@ -46,7 +46,9 @@
         <td class="hstack gap-1">
           <a [routerLink]="[res.id]" class="btn btn-info mx-2" role="button" >Voir</a>
           <a class="btn btn-primary mx-2" role="button">Modifier</a>
-          <a class="btn btn-danger mx-2" role="button">Supprimer</a>
+          <a class="btn btn-danger mx-2" role="button" (click)="openModal(i,res.id)" >Supprimer</a>
+
+          
 
         </td>
 
@@ -68,3 +70,4 @@
 </div>
 
 <br>
+

@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReservationService } from '../Services/reservation.service';
 import { PersonneService } from '../Services/personne.service';
 import { Reservation } from '../Models/reservation';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-reservation',
@@ -11,13 +13,16 @@ import { Reservation } from '../Models/reservation';
 })
 export class ReservationComponent implements OnInit, OnDestroy {
 
+  modalRef: MdbModalRef<ModalComponent> | null = null;
+
   reservations: Reservation[] = [];
   Response: any;
   observable: Observable<object> = new Observable<Object>();
 
   sub : Subscription = new Subscription();
 
-  constructor(private personneService: PersonneService,private reservationService : ReservationService) { }
+
+  constructor(private personneService: PersonneService,private reservationService : ReservationService, private modalService : MdbModalService) { }
   
   ngOnDestroy(): void {
     this.sub.unsubscribe();
@@ -55,8 +60,17 @@ export class ReservationComponent implements OnInit, OnDestroy {
         this.reservationService.reservations.push(r);
         //console.log(cat.libelle);
       }
+      
       console.log(this.reservations.length);
     }
+    
+  }
+
+  openModal(index : number ,id : String) {
+    console.log("id de la reservation choisie "+id);
+    this.modalRef = this.modalService.open(ModalComponent,{
+      data: { index: index, id : id },
+    });
     
   }
   

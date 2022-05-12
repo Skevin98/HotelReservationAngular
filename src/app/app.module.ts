@@ -37,6 +37,7 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
 import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     DetailReservationComponent,
     CreateReservationComponent,
     FooterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

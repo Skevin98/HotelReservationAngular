@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, Subject, throwError } from 'rxjs';
 import { Reservation } from '../Models/reservation';
 
 @Injectable({
@@ -16,40 +16,9 @@ export class ReservationService {
 
 
   reservations : Reservation[]=[];
+  ReservationsSubject = new Subject<Reservation[]>();
 
 
- /*  reservations : any []=[{
-    _idReservation : 0,
-    _chambre :"2 chambres",
-    _dateReservation :"04/11/2021",
-    _dateEntree:"04/11/2021",
-    _dateSortie:"04/12/2021",
-    _montant: 10000
-  },
-  {
-    _idReservation : 1,
-    _chambre :"5 chambres",
-    _dateReservation :"10/12/2022",
-    _dateEntree:"20/12/2022",
-    _dateSortie:"25/12/2022",
-    _montant: 200
-  },
-  {
-    _idReservation : 2,
-    _chambre :"4 chambres",
-    _dateReservation :"18/07/2022",
-    _dateEntree:"11/09/2022",
-    _dateSortie:"08/10/2022",
-    _montant: 3000
-  },
-  {
-    _idReservation : 3,
-    _chambre :"9 chambres",
-    _dateReservation :"31/12/2022",
-    _dateEntree:"03/01/2023",
-    _dateSortie:"19/01/2023",
-    _montant: 2500
-  }] */
 
   constructor(private http: HttpClient) { }
 
@@ -79,6 +48,10 @@ export class ReservationService {
     return this.http.get<object>(this.baseUrl+`/byUser/`+id);
   }
 
+  GetAll(): Observable<object> {
+    return this.http.get<object>(this.baseUrl);
+  }
+
   GetById(id : String): Observable<object> {
     return this.http.get<object>(this.baseUrl+`/`+id);
   }
@@ -90,11 +63,15 @@ export class ReservationService {
     );
   }
 
-  updateReservation(reservation : object): Observable<object> {
-    return this.http.post<object>(this.baseUrl,reservation)
+  updateReservation(id : String,reservation : object): Observable<object> {
+    return this.http.post<object>(this.baseUrl+`/`+id,reservation)
     .pipe(
       catchError(this.handleError)
     );
+  }
+
+  emitReservation(){
+    this.ReservationsSubject.next(this.reservations.slice());
   }
 
 }

@@ -24,8 +24,13 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   date = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   //date = formatDate(new Date(), 'dd-MM-yyyyTH:mm', 'en');
 
+  indispo : boolean = true;
+
+  temp : Reservation = new Reservation();
 
   Response : any;
+
+  AllResResponse : any;
 
   activate = true;
 
@@ -37,14 +42,17 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
   Chambre = new Chambre();
 
-
-
+  Reservations : Reservation[] = [];
 
   Reservation : Reservation = new Reservation();
 
   observable: Observable<object> = new Observable<Object>();
 
   sub : Subscription = new Subscription();
+
+  observableRes: Observable<object> = new Observable<Object>();
+
+  subRes : Subscription = new Subscription();
 
   constructor(private personneService : PersonneService, 
     private categorieService : CategorieService ,
@@ -67,11 +75,21 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       });
       this.sub.add(() => this.loadChambres());
 
+      this.observableRes= this.reservationService.GetAll();
+      this.subRes = this.observableRes.subscribe(
+        data =>
+      { this.AllResResponse = data;
+        console.log("donnnées");
+        console.log(data);
+      }
+      );
+      this.subRes.add(() => this.loadReservation());
 
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.subRes.unsubscribe();
   }
 
 
@@ -99,6 +117,32 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
     console.log(this.Chambres.length);
   }
 
+  loadReservation() {
+    this.reservationService.reservations = [];
+    if(this.AllResResponse){
+      for (let i of this.AllResResponse) {
+        let r : Reservation = new Reservation();
+        r.id = i["id"];
+        r.personneID = i["userID"];
+        r.personne = i["user"];
+        r.chambreID = i["chambreId"];
+        r.chambre = i["chambre"];
+        r.dateReservation = i["dateReservation"];
+        r.dateEntree = i["dateEntree"];
+        r.dateSortie = i["dateSortie"];
+        r.isActive= i["isActive"];
+        r.montant = i["montant"];
+        r.nb_Adults = i["nb_Adults"];
+        r.nb_Enfants = i["nb_Enfants"];
+        this.Reservations.push(r);
+        //console.log(cat.libelle);
+      }
+      
+      console.log(this.Reservations.length);
+    }
+    
+  }
+
 
   onSubmit(form : NgForm) {
     const r = {
@@ -114,18 +158,33 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       nb_Enfants: form.value['nbenfant']
     }
 
-    this.reservationService.AddReservation(r)
-    .subscribe();
+    this.temp.dateEntree = form.value['arrivee'];
+    this.temp.dateSortie = form.value['depart'];
+    this.temp.chambreID = form.value['chambres'];
 
-    this.router.navigate(['/reservations']);
+    if(this.disponible(this.temp)){
+      console.log("dispo")
+      this.indispo = true;
 
-    console.log("reservation : "+form.value['nbenfant']);
-    console.log("reservation : "+form.value['nbadult']);
-    console.log("reservation : "+form.value['arrivee']);
-    console.log("reservation : "+form.value['depart']);
+      this.reservationService.AddReservation(r)
+      .subscribe().add(()=>{
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/reservations']);
+        });
+
+      });
+
+      
+    }else{
+      console.log("non dispo")
+        this.indispo = false;
+      }
+    
+
+    
+
     console.log("reservation : "+this.Reservation.montant);
-    console.log("reservation : "+this.Reservation.personneID);
-    console.log("reservation : "+form.value['chambres']);
+
 
   }
 
@@ -150,6 +209,28 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
     //console.log("Tarif de la cat : "+this.Chambre.categorie.tarif)
     this.nbduration();
     this.Reservation.montant = this.Chambre.categorie.tarif*this.duration + ReservationService.ChildPrice*this.Reservation.nb_Enfants + ReservationService.AdultPrice*this.Reservation.nb_Adults;
+  }
+
+  disponible(r : Reservation){
+    console.log("### "+this.Reservations.length)
+    for (let res of this.Reservations) {
+      if (r.chambreID == res.chambreID && 
+        ((r.dateEntree >= res.dateEntree) && (r.dateEntree < res.dateSortie)
+      || (r.dateSortie > res.dateEntree) && (r.dateSortie <= res.dateSortie))) {
+
+        console.log((r.dateEntree >= res.dateEntree) && (r.dateEntree < res.dateSortie));
+        console.log((r.dateSortie > res.dateEntree) && (r.dateSortie <= res.dateSortie));
+
+        console.log("date d'entree entree "+r.dateEntree);
+        console.log("date d'entrée de comparaison "+res.dateEntree);
+        console.log("date de sortie entree "+r.dateSortie);
+        console.log("date de sortie de comparaison "+res.dateSortie);
+        return false;
+        
+      }
+    }
+    return true;
+
   }
 
 }
