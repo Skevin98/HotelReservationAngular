@@ -5,6 +5,8 @@ import { PersonneService } from '../Services/personne.service';
 import { Reservation } from '../Models/reservation';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from '../modal/modal.component';
+import { AuthService } from '../Services/auth.service';
+import { EventEmitterService } from '../Services/event-emitter.service';
 
 @Component({
   selector: 'app-reservation',
@@ -21,14 +23,18 @@ export class ReservationComponent implements OnInit, OnDestroy {
 
   sub : Subscription = new Subscription();
 
+  isAuth : boolean = false;
 
-  constructor(private personneService: PersonneService,private reservationService : ReservationService, private modalService : MdbModalService) { }
-  
+
+  constructor(private eventEmitterService: EventEmitterService,private authService : AuthService, private personneService: PersonneService,private reservationService : ReservationService, private modalService : MdbModalService) { }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.isAuth = this.authService.isAuth;
+    this.reloadNav();
     this.reservations = [];
     this.observable = this.reservationService.GetByUser(this.personneService.User.id);
     this.sub = this.observable.subscribe(
@@ -60,10 +66,10 @@ export class ReservationComponent implements OnInit, OnDestroy {
         this.reservationService.reservations.push(r);
         //console.log(cat.libelle);
       }
-      
+
       console.log(this.reservations.length);
     }
-    
+
   }
 
   openModal(index : number ,id : String) {
@@ -71,9 +77,13 @@ export class ReservationComponent implements OnInit, OnDestroy {
     this.modalRef = this.modalService.open(ModalComponent,{
       data: { index: index, id : id },
     });
-    
+
   }
-  
+
+  reloadNav(){
+    this.eventEmitterService.onFirstComponentClick();
+  }
+
 
 
 

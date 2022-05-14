@@ -20,6 +20,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
 
   duration : any;
+  x : number = 1;
 
   date = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   //date = formatDate(new Date(), 'dd-MM-yyyyTH:mm', 'en');
@@ -54,10 +55,10 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
   subRes : Subscription = new Subscription();
 
-  constructor(private personneService : PersonneService, 
+  constructor(private personneService : PersonneService,
     private categorieService : CategorieService ,
     private chambreService : ChambreService,
-    private reservationService : ReservationService, 
+    private reservationService : ReservationService,
     private route : ActivatedRoute,
     private router : Router) {
     this.idCat = this.route.snapshot.params['id'];
@@ -137,10 +138,10 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
         this.Reservations.push(r);
         //console.log(cat.libelle);
       }
-      
+
       console.log(this.Reservations.length);
     }
-    
+
   }
 
 
@@ -174,14 +175,14 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
       });
 
-      
+
     }else{
       console.log("non dispo")
         this.indispo = false;
       }
-    
 
-    
+
+
 
     console.log("reservation : "+this.Reservation.montant);
 
@@ -214,9 +215,10 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   disponible(r : Reservation){
     console.log("### "+this.Reservations.length)
     for (let res of this.Reservations) {
-      if (r.chambreID == res.chambreID && 
+      if (r.chambreID == res.chambreID &&
         ((r.dateEntree >= res.dateEntree) && (r.dateEntree < res.dateSortie)
       || (r.dateSortie > res.dateEntree) && (r.dateSortie <= res.dateSortie))) {
+
 
         console.log((r.dateEntree >= res.dateEntree) && (r.dateEntree < res.dateSortie));
         console.log((r.dateSortie > res.dateEntree) && (r.dateSortie <= res.dateSortie));
@@ -226,7 +228,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
         console.log("date de sortie entree "+r.dateSortie);
         console.log("date de sortie de comparaison "+res.dateSortie);
         return false;
-        
+
       }
     }
     return true;

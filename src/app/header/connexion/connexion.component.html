@@ -1,54 +1,31 @@
 
-<!--     <div ngbDropdown display="dynamic" class="d-inline-block" placement="left"  >
-      <button class="btn btn-outline-secondary" data-toggle="button" id="dropdownForm1" ngbDropdownToggle >Connexion</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="connexionMenu" class="dropdown-menu dropdown-menu-end">
-        <form class="px-4 py-3">
-          <div class="mb-3">
-            <label for="exampleDropdownFormEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleDropdownFormEmail1" required placeholder="email@example.com" autocomplete="username">
-          </div>
-          <div class="mb-3">
-            <label for="exampleDropdownFormPassword1">Mot de passe</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword1" required placeholder="Mot de passe" autocomplete="current-password">
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="dropdownCheck">
-            <label class="form-check-label" for="dropdownCheck">
-              Se rappeler de moi
-            </label>
-          </div>
-          <button type="submit" class="btn btn-outline-secondary">Se connecter</button>
-        </form>
-        <div class="dropdown-divider"></div>
-        <button ngbDropdownItem routerLink="inscription">Pas encore de compte ? Creer un compte</button>
-        <button ngbDropdownItem>Mot de passe oublié ?</button>
-      </div>
-    </div> -->
 
 
     <div mdbDropdown class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
         type="button"
+        id="dropdownMenuButton"
         mdbDropdownToggle
         aria-expanded="false"
+        #dropdown
       >
         Connexion
       </button>
-      <div mdbDropdownMenu class="dropdown-menu">
-        <form class="px-4 py-3">
+      <div mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form class="px-4 py-3" (ngSubmit)="onSubmit(a)" #a="ngForm" >
           <!-- Email input -->
           <mdb-form-control>
-            <input mdbInput type="email" id="form1Example10" class="form-control" />
-            <label mdbLabel class="form-label" for="form1Example10">Adresse mail</label>
+            <input mdbInput name="emailr" type="email" id="emailr" class="form-control" required/>
+            <label mdbLabel class="form-label" for="emailr">Adresse mail</label>
           </mdb-form-control>
 
           <br/>
 
           <!-- Password input -->
           <mdb-form-control>
-            <input mdbInput type="password" id="form1Example11" class="form-control" />
-            <label mdbLabel class="form-label" for="form1Example11">Mot de passe</label>
+            <input mdbInput name="passwordr" type="password" id="passwordr" class="form-control" required />
+            <label mdbLabel class="form-label" for="passwordr">Mot de passe</label>
           </mdb-form-control>
 
           <br/>
@@ -72,12 +49,25 @@
               <a href="#!">Mot de passe oublié ?</a>
             </div>
           </div>
+
+
           <!-- Submit button -->
-          <button type="submit" class="btn btn-outline-secondary btn-block" routerLink="profil">Se connecter</button>
+          <button type="submit"
+          [disabled]="a.invalid"
+          disabled="true"
+          class="btn btn-outline-secondary btn-block"
+          routerLink="profil">
+            Se connecter
+          </button>
         </form>
+
         <div class="dropdown-divider"></div>
         <a type="button" class="dropdown-item" routerLink="inscription">Vous n'avez pas de compte? Créer un compte</a>
 
       </div>
     </div>
+
+
+
+
 

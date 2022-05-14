@@ -93,7 +93,7 @@ export class Reservation {
   }
 
 
-    private _nb_Adults : number = 0;
+    private _nb_Adults : number = 1;
     public get nb_Adults() : number {
       return this._nb_Adults;
     }

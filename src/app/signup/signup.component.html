@@ -10,7 +10,7 @@
 
 <br/>
 
-<form>
+<form (ngSubmit)="onSubmit(g)" #g="ngForm">
 
 
   <!-- last name input -->
@@ -31,7 +31,7 @@
 
   <!-- age input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="number" id="form1Example3" class="form-control" required  />
+    <input mdbInput type="number" min="0" value="5" id="form1Example3" class="form-control" required  />
     <label mdbLabel class="form-label" for="form1Example3">Age*</label>
   </mdb-form-control>
 

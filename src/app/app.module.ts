@@ -39,6 +39,19 @@ import { CategoriesComponent } from './categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { SigninComponent } from './signin/signin.component';
+import { AuthGardService } from './Services/auth-gard.service';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -56,7 +69,8 @@ import { ModalComponent } from './modal/modal.component';
     CreateReservationComponent,
     FooterComponent,
     CategoriesComponent,
-    ModalComponent
+    ModalComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -66,12 +80,13 @@ import { ModalComponent } from './modal/modal.component';
 
       { path:'reservations/:id', component: DetailReservationComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-
+      { path: 'auth', component: SigninComponent },
       { path: 'home', component: HomeComponent },
       { path: 'inscription', component: SignupComponent },
       { path: 'categories', component: CategoriesComponent },
-      { path:'categories/:id', component: CreateReservationComponent },
-      { path: 'profil', component: ProfilComponent }
+      { path:'categories/:id', canActivate:[AuthGardService], component: CreateReservationComponent },
+      { path: 'profil', component: ProfilComponent },
+      { path: '**', redirectTo: '/home' },
 
     ]),
 
@@ -91,10 +106,16 @@ import { ModalComponent } from './modal/modal.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    
+
     ReactiveFormsModule,
 
-    HttpClientModule
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions())
+
   ],
   providers: [],
   bootstrap: [AppComponent],

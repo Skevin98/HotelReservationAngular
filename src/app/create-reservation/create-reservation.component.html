@@ -24,7 +24,6 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
 
 
-      <!-- last name input -->
       <mdb-form-control class="mx-2 form-group">
         <input required mdbInput type="date" id="arrivee" [min]="date" [max]="Reservation.dateSortie" class="form-control" name="arrivee" required [(ngModel)]="Reservation.dateEntree"  (ngModelChange)="montant()"/>
         <label mdbLabel class="form-label" for="arrive">Date d'arrivée</label>
@@ -32,7 +31,6 @@
 
       <br/>
 
-      <!-- first name input -->
       <mdb-form-control class="mx-2">
         <input mdbInput type="date" id="depart" [min]="Reservation.dateEntree"  class="form-control" name="depart" required [(ngModel)]="Reservation.dateSortie"  (ngModelChange)="montant()"/>
         <label mdbLabel class="form-label" for="depart">Date de départ</label>
@@ -98,10 +96,9 @@
 
       <br/>
 
-      <!-- age input -->
       <mdb-form-control class="mx-2">
-        <input mdbInput type="number" id="nbadult" min="0" max="5" class="form-control" name="nbadult" required [(ngModel)]="Reservation.nb_Adults" (ngModelChange)="montant()" />
-        <label mdbLabel class="form-label" for="nbadul">Nombre d'adultes</label>
+        <input mdbInput type="number" id="nbadult" min="1" max="5" value="1" class="form-control" name="nbadult" required [(ngModel)]="Reservation.nb_Adults" (ngModelChange)="montant()" />
+        <label mdbLabel class="form-label" for="nbadult">Nombre d'adultes</label>
       </mdb-form-control>
 
       <br/>
@@ -132,7 +129,7 @@
       <!-- Submit button -->
       <button type="submit"
       class="btn btn-secondary mx-2 mb-1"
- 
+
       [disabled]="f.invalid">
       Valider la reservation
     </button>
