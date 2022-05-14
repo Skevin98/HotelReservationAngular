@@ -13,8 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ReservationComponent } from './reservation/reservation.component';
 
 
-import { ChambresComponent } from './chambres/chambres.component';
-import { SingleReservationComponent } from './single-reservation/single-reservation.component';
+
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -31,7 +30,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ProfilComponent } from './profil/profil.component';
-import { DetailChambreComponent } from './detail-chambre/detail-chambre.component';
+
 import { DetailReservationComponent } from './detail-reservation/detail-reservation.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { FooterComponent } from './footer/footer.component';
@@ -61,10 +60,9 @@ import { AuthGardService } from './Services/auth-gard.service';
     SignupComponent,
     HomeComponent,
     ReservationComponent,
-    ChambresComponent,
-    SingleReservationComponent,
+
     ProfilComponent,
-    DetailChambreComponent,
+
     DetailReservationComponent,
     CreateReservationComponent,
     FooterComponent,

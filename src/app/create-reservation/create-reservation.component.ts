@@ -20,7 +20,6 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
 
   duration : any;
-  x : number = 1;
 
   date = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   //date = formatDate(new Date(), 'dd-MM-yyyyTH:mm', 'en');
