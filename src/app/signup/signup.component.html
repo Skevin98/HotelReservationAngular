@@ -1,41 +1,101 @@
-<br/>
+<br>
+<br>
 
 <h1 class="mx-2">Créer un compte</h1>
 
-<br/>
+<br>
+<br>
 
 <div>
   <label class="lead mx-2">Veuillez entrer les informations requises : <span style="color:red">(*) Champs Obligatoires</span></label>
 </div>
 
-<br/>
+<br>
+<br>
 
-<form (ngSubmit)="onSubmit(g)" #g="ngForm">
+<form class="needs-validation" (ngSubmit)="onSubmit()"  [formGroup]="validationForm" novalidate>
 
 
   <!-- last name input -->
   <mdb-form-control class="mx-2">
-    <input required mdbInput type="text" id="form1Example1" class="form-control" required/>
-    <label mdbLabel class="form-label" for="form1Example1">Nom*</label>
+    <input formControlName="nom" 
+    mdbValidate 
+    required 
+    mdbInput 
+    type="text" 
+    id="nom" 
+    class="form-control"  
+    name="nom"/>
+    <label mdbLabel class="form-label" for="nom">Nom*</label>
+    <mdb-error
+    *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)" >
+      Champ obligatoire.
+    </mdb-error>
+    
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
 
   <!-- first name input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="text" id="form1Example2" class="form-control" />
-    <label mdbLabel class="form-label" for="form1Example2">Prénom</label>
+    <input
+    formControlName="prenom" 
+    mdbInput
+    type="text" 
+    id="prenom" 
+    class="form-control" 
+    name="prenom"/>
+    <label mdbLabel class="form-label" for="prenom">Prénom</label>
+
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
+
+  <!-- username input -->
+  <mdb-form-control class="mx-2">
+    <input
+    formControlName="username"
+    mdbValidate 
+    required 
+    mdbInput 
+    type="text" 
+    id="username" 
+    class="form-control" 
+    name="username"/>
+    <label mdbLabel class="form-label" for="username">Nom d'utilisateur*</label>
+    <mdb-error
+    *ngIf="username?.invalid && (username?.dirty || username?.touched)" >
+      Champ obligatoire.
+    </mdb-error>
+  </mdb-form-control>
+
+  <br>
+  <br>
 
   <!-- age input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="number" min="0" value="5" id="form1Example3" class="form-control" required  />
-    <label mdbLabel class="form-label" for="form1Example3">Age*</label>
+    <input
+    formControlName="age"
+    mdbValidate 
+    mdbInput 
+    type="number" 
+    min="0" 
+    value="5" 
+    id="age" 
+    class="form-control" 
+    name="age"
+    required  />
+    <label mdbLabel class="form-label" for="age">Age*</label>
+    <mdb-error
+    *ngIf="age?.invalid && (age?.dirty || age?.touched)" >
+      Vous devez etre majeur.
+    </mdb-error>
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
 
 
 
@@ -44,84 +104,144 @@
     <p class="text-muted mx-2">Sexe</p>
     <div class="form-check mx-2">
       <input
+        formControlName="sexe"
         mdbRadio
         class="form-check-input"
         type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault1"
+        name="sexe"
+        id="radio_masc"
+        value="Masculin"
       />
-      <label class="form-check-label" for="flexRadioDefault1"> Masculin </label>
+      <label class="form-check-label" for="radi_masc"> Masculin </label>
     </div>
     <div class="form-check mx-2">
       <input
         mdbRadio
+        formControlName="sexe"
         class="form-check-input"
         type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault2"
+        name="sexe"
+        id="radio_fem"
+        value="Feminin"
 
       />
-      <label class="form-check-label" for="flexRadioDefault2"> Féminin </label>
+      <label class="form-check-label" for="radio_fem"> Féminin </label>
     </div>
 
     <div class="form-check mx-2">
       <input
         mdbRadio
+        formControlName="sexe"
         class="form-check-input"
         type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault3"
+        name="sexe"
+        id="radio_none"
         [checked]="true"
+        value="Non spécifié"
       />
-      <label class="form-check-label" for="flexRadioDefault3"> Ne pas spécifier </label>
+      <label class="form-check-label" for="radio_none"> Ne pas spécifier </label>
     </div>
   </fieldset>
 
 
 
-  <br/>
+  <br>
+  <br>
 
 
   <!-- address input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="text" id="form1Adresse" class="form-control"  />
-    <label mdbLabel class="form-label" for="form1Adresse">Adresse</label>
+    <input 
+    formControlName="adresse"
+    mdbInput 
+    type="text"
+    id="adresse" 
+    class="form-control" 
+    name="adresse"  />
+    <label mdbLabel class="form-label" for="adresse">Adresse</label>
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
 
   <!-- Email input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput  type="email" id="form1Example4" class="form-control" required/>
-    <label mdbLabel class="form-label" for="form1Example4">Email*</label>
+    <input
+    formControlName="email"
+    mdbInput  
+    mdbValidate
+    type="email" 
+    id="email" 
+    class="form-control" 
+    required 
+    name="email"/>
+    <label mdbLabel class="form-label" for="email">Email*</label>
+    <mdb-error
+    *ngIf="email?.invalid && (email?.dirty || email?.touched)" >
+      Email invalide.
+    </mdb-error>
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
 
   <!-- tel input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="tel" id="form1Example5" class="form-control" required/>
-    <label mdbLabel class="form-label" for="form1Example5">Téléphone</label>
+    <input
+    formControlName="telephone"
+    mdbInput type="tel" id="telephone" class="form-control" required name="telephone"/>
+    <label mdbLabel class="form-label" for="telephone">Téléphone</label>
   </mdb-form-control>
 
 
-  <br/>
+  <br>
+  <br>
 
   <!-- Password input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="password" id="form1Example5" class="form-control" required />
-    <label mdbLabel class="form-label" for="form1Example5">Mot de passe*</label>
+    <input 
+    formControlName="password"
+    mdbValidate
+    mdbInput 
+    type="password" 
+    id="password" 
+    class="form-control" 
+    required 
+
+    name="password" />
+    <label mdbLabel class="form-label" for="password">Mot de passe*</label>
+    <mdb-error
+    *ngIf="password?.invalid && (password?.dirty || password?.touched)" >
+      Mot de passe invalide. Votre mot de passe doit contenir au moins 8 caractères dont 1 lettre.
+    </mdb-error>
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
+
 
   <!-- Password input -->
   <mdb-form-control class="mx-2">
-    <input mdbInput type="password" id="form1Example6" class="form-control" required />
-    <label mdbLabel class="form-label" for="form1Example6">Confirmer le mot de passe*</label>
+    <input
+    formControlName="passConfirm" 
+    mdbInput 
+    type="password" 
+    id="passConfirm" 
+    class="form-control" 
+    required 
+
+    name="passConfirm"  />
+    <label mdbLabel class="form-label" for="passConfirm">Confirmer le mot de passe*</label>
+
+
+    <mdb-error
+    *ngIf="validationForm.errors && (passConfirm?.dirty || passConfirm?.touched)" >
+    Les mots de passes ne correspondent pas.
+    </mdb-error>
   </mdb-form-control>
 
-  <br/>
+  <br>
+  <br>
 
 
   <!-- 2 column grid layout for inline styling -->
@@ -133,10 +253,11 @@
         class="form-check-input"
         type="checkbox"
         value=""
-        id="form1Example7" />
+        name="rappel"
+        id="rappel" />
         <label
         class="form-check-label"
-        for="form1Example7"> Se rappeler de moi </label>
+        for="rappel"> Se rappeler de moi </label>
       </div>
 
       <div class="form-check mx-2">
@@ -144,31 +265,45 @@
         class="form-check-input"
         type="checkbox"
         value=""
-        id="form1Example8" />
+        name="newlestter"
+        id="newlestter" />
         <label
         class="form-check-label"
-        for="form1Example8"> S'abonner à la newlestter </label>
+        for="newlestter"> S'abonner à la newlestter </label>
       </div>
 
 
 
       <div class="form-check mx-2">
         <input mdbCheckbox
+        formControlName="security"
+        mdbValidate
         class="form-check-input"
         type="checkbox"
-        value=""
-        id="form1Example9" required />
+        name="security"
+        id="security" required />
         <label
         class="form-check-label"
-        for="form1Example9"> J'accepte la politique de sécurité </label>
+        for="security"> J'accepte la politique de sécurité </label>
+        <mdb-error
+        *ngIf="security?.invalid && (security?.dirty || security?.touched)" >
+        Vous devez accepter la politique de sécurité.
+    </mdb-error>
       </div>
     </div>
 
   </div>
 
-  <br/>
+  <br>
+  <br>
+
+
+
+  <br>
+
+
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-secondary mx-2 mb-1" routerLink="profil">Créer un compte</button>
+  <button type="submit" [disabled]="validationForm.invalid" class="btn btn-secondary mx-2 mb-1">Créer un compte</button>
 </form>
 

@@ -89,7 +89,7 @@ export class Personne {
     this._age = value;
   }
 
-  private _sexe: string = "";
+  private _sexe: string = "Non spécifié";
   public get sexe(): string {
     return this._sexe;
   }

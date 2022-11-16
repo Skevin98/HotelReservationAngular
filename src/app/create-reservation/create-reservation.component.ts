@@ -229,6 +229,14 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
         return false;
 
       }
+      else{
+        if(r.chambreID == res.chambreID &&
+          ((res.dateEntree >= r.dateEntree) && (res.dateEntree < r.dateSortie)
+        || (res.dateSortie > r.dateEntree) && (res.dateSortie <= r.dateSortie))){
+          return false;
+
+        }
+      }
     }
     return true;
 
