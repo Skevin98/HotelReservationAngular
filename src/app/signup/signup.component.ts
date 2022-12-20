@@ -4,80 +4,137 @@ import { AbstractControl, EmailValidator, FormControl, FormGroup, NgForm, Patter
 import { PersonneService } from '../Services/personne.service';
 import { Router } from '@angular/router';
 import { Personne } from '../Models/personne';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent  {
+export class SignupComponent implements OnInit {
 
-  mdpConfirm : String = "";
+  mdpConfirm: String = "";
+
+  isUpdate : boolean = false;
+
+  validationForm: FormGroup;
+
+  currentUser = new Personne();
 
 
-  validationForm : FormGroup;
 
+  constructor(private personneService: PersonneService, private router: Router,
+    private authService: AuthService) {
 
-
-  constructor(private personneService : PersonneService, private router : Router ) {
     this.validationForm = new FormGroup({
-      nom : new FormControl(null, Validators.required),
-      prenom : new FormControl(),
-      username : new FormControl(null, Validators.required),
-      age : new FormControl(null, Validators.min(18)),
-      email : new FormControl('', Validators.email),
-      adresse : new FormControl(),
-      telephone : new FormControl(),
-      sexe : new FormControl(),
-      password : new FormControl(null, Validators.pattern("^" +
-      "(?=.*[0-9])" +
-      "(?=.*[a-zA-Z])" +
-      "(?=\\S+$)" +
-      ".{8,}" +
-      "$")),
-      passConfirm : new FormControl(),
-      security : new FormControl(null, Validators.requiredTrue)
+      id : new FormControl(),
+      nom: new FormControl(null, Validators.required),
+      prenom: new FormControl(),
+      username: new FormControl(null, Validators.required),
+      age: new FormControl(null, Validators.min(18)),
+      email: new FormControl('', Validators.email),
+      adresse: new FormControl(),
+      telephone: new FormControl(),
+      sexe: new FormControl(null),
+      password: new FormControl(null, Validators.pattern("^" +
+        "(?=.*[0-9])" +
+        "(?=.*[a-zA-Z])" +
+        "(?=\\S+$)" +
+        ".{8,}" +
+        "$")),
+      passConfirm: new FormControl(),
+      security: new FormControl(null, Validators.requiredTrue)
     }, this.checkPasswords());
 
-   }
-
-   get nom(): AbstractControl | null{
-    return this.validationForm.get('nom');
-   }
-
-   get username(): AbstractControl | null{
-    return this.validationForm.get('username');
-   }
-
-   get age(): AbstractControl | null{
-    return this.validationForm.get('age');
-   }
-
-   get email(): AbstractControl | null{
-    return this.validationForm.get('email');
-   }
-
-   get password(): AbstractControl | null{
-    return this.validationForm.get('password');
-   }
-
-   get passConfirm(): AbstractControl | null{
-    return this.validationForm.get('passConfirm');
-   }
-
-   get sexe(): AbstractControl | null{
-    return this.validationForm.get('sexe');
-   }
-
-   get security(): AbstractControl | null{
-    return this.validationForm.get('security');
-   }
 
 
-  onSubmit(){
+  }
+
+  ngOnInit(): void {
+    if (this.authService.currentUser.id != "") {
+      this.isUpdate = true;
+      this.currentUser = this.authService.currentUser;
+      this.id = this.currentUser.id;
+      this.nom = this.currentUser.nom;
+      this.validationForm.controls['prenom'].setValue(this.currentUser.prenom);
+      this.username = this.currentUser.username;
+      this.age = this.currentUser.age;
+      this.email = this.currentUser.email;
+      this.sexe = this.currentUser.sexe;
+      this.validationForm.controls['adresse'].setValue(this.currentUser.adresse);
+      this.validationForm.controls['telephone'].setValue(this.currentUser.telephone);
+    }
+  }
 
 
+  get id(): any{
+    // return this.validationForm.get('nom');
+    return this.validationForm.controls['id'].value;
+  }
 
+  set id(n : string){
+    this.validationForm.get('id')?.setValue(n);
+  }
+
+  get nom(): any{
+    // return this.validationForm.get('nom');
+    return this.validationForm.controls['nom'].value;
+  }
+
+  set nom(n : string){
+    this.validationForm.get('nom')?.setValue(n);
+  }
+
+  get username(): any {
+    return this.validationForm.controls['username'].value;
+  }
+
+  set username(n : string){
+    this.validationForm.get('username')?.setValue(n);
+  }
+
+  get age(): any {
+    return this.validationForm.controls['age'].value;
+  }
+
+  set age(n : number){
+    this.validationForm.get('age')?.setValue(n);
+  }
+
+  get email(): any {
+    return this.validationForm.controls['email'].value;
+  }
+
+  set email(n : string){
+    this.validationForm.get('email')?.setValue(n);
+  }
+
+  get password(): any {
+    return this.validationForm.controls['password'].value;
+  }
+
+  set password(n : string){
+    this.validationForm.get('age')?.setValue(n);
+  }
+
+  get passConfirm(): any {
+    return this.validationForm.controls['passConfirm'].value;
+  }
+
+  get sexe(): any {
+    return this.validationForm.controls['sexe'].value;
+  }
+
+  set sexe(n : string){
+    this.validationForm.get('sexe')?.setValue(n);
+  }
+
+  get security(): any {
+    return this.validationForm.controls['security'].value;
+  }
+
+
+  onSubmit() {
     this.validationForm.markAllAsTouched();
 
 
@@ -88,17 +145,17 @@ export class SignupComponent  {
       u.privilege = "User";
       delete u.security;
       //console.log(u);
-      
 
-        this.personneService.AddUser(u)
-            .subscribe().add(()=>{
-              this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-                this.router.navigate(['/profil']);
-            })
-          });
-    } 
-    
-    
+
+      this.personneService.AddUser(u)
+        .subscribe().add(() => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/profil']);
+          })
+        });
+    }
+
+
 
 
 
@@ -109,15 +166,15 @@ export class SignupComponent  {
 
 
 
-  checkPasswords() : ValidatorFn { 
-    return (group: AbstractControl):  ValidationErrors | null => { 
-    let pass = group.get('password')?.value;
-    let confirmPass = group.get('passConfirm')?.value
-    //console.log("password : " +pass+" confirm : "+confirmPass );
-    
-    return pass === confirmPass ? null : { notSame: true }
+  checkPasswords(): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+      let pass = group.get('password')?.value;
+      let confirmPass = group.get('passConfirm')?.value
+      //console.log("password : " +pass+" confirm : "+confirmPass );
+
+      return pass === confirmPass ? null : { notSame: true }
+    }
   }
-}
 
 
 }

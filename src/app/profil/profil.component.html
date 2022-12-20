@@ -1,1 +1,54 @@
-<p>profil works!</p>
+<br/>
+
+<h1 class="mx-2">Mon profil</h1>
+
+
+<br/>
+
+<table class="table px-2">
+
+  <tbody>
+
+    <tr>
+      <th scope="row">identifiant</th>
+      <td>{{currentUser.id}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Nom</th>
+      <td>{{currentUser.nom}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Prénom</th>
+      <td>{{currentUser.prenom}}</td>
+
+    </tr>
+
+    <tr>
+      <th scope="row">Nom utilisateur</th>
+      <td>{{currentUser.username}}</td>
+
+    </tr>
+
+
+    <tr>
+      <th scope="row">Adresse mail</th>
+      <td>{{currentUser.email}}</td>
+
+    </tr>
+
+    <tr class="text-center">
+      <td >
+        <a class="btn btn-primary mx-2" role="button" routerLink="/profil/update">Modifier les informations du compte</a>
+      </td>
+
+      <td>
+        <a class="btn btn-danger mx-2" role="button"  >Desactiver le compte</a>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>

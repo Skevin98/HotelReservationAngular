@@ -13,7 +13,7 @@ import { EventEmitterService } from '../Services/event-emitter.service';
 export class HeaderComponent implements OnInit {
 
 
-  isAuth : boolean= true;
+  isAuth : boolean= false;
 
   active = 0;
 
@@ -36,13 +36,17 @@ export class HeaderComponent implements OnInit {
             label: 'Mes reservations',
             link: 'reservations',
             index: 1
-        }
+        }, {
+          label: 'Mon profil',
+          link: 'profil',
+          index: 2
+      }
 
     ];
   }
 
   ngOnInit(): void {
-    this.isAuth = !this.authService.isAuth;
+    this.isAuth = this.authService.isAuth;
     if (this.eventEmitterService.subsVar==undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService
       .invokeOnClick.subscribe(() => {

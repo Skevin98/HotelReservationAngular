@@ -84,6 +84,7 @@ import { AuthGardService } from './Services/auth-gard.service';
       { path: 'categories', component: CategoriesComponent },
       { path:'categories/:id', canActivate:[AuthGardService], component: CreateReservationComponent },
       { path: 'profil', component: ProfilComponent },
+      { path: 'profil/update', component: SignupComponent },
       { path: '**', redirectTo: '/home' },
 
     ]),

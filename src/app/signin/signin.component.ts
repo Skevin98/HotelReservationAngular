@@ -34,7 +34,9 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     const exist = this.autService.users.find((data)=>{
-      if(data.mail == r.mail && data.password == r.password){
+      if(data.email == r.mail && data.password == r.password){
+        this.autService.currentUserId = data.id;
+        this.autService.currentUser = data;
         return data;
       }
       return null;
@@ -47,7 +49,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     else{
       this.nomatch = false;
       console.log("1");
-      this.autService.singIn();
+      this.autService.signIn();
     }
 
   }

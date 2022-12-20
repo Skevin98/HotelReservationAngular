@@ -13,7 +13,7 @@ export class PersonneService {
   User : Personne = new Personne();
 
   constructor(private http: HttpClient) {
-    this.User.id = "38d89168-4677-47b2-bf61-cfeb53410671";
+    // this.User.id = "38d89168-4677-47b2-bf61-cfeb53410671";
    }
 
   AddUser(user : object): Observable<object> {
@@ -40,6 +40,10 @@ export class PersonneService {
 
   GetById(id : String): Observable<object> {
     return this.http.get<object>(this.baseUrl+`/`+id);
+  }
+
+  GetAll():Observable<object>{
+    return this.http.get<object>(this.baseUrl);
   }
 
 }

@@ -96,7 +96,10 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngFor="let link of navLinks" >
-          <a class="nav-link active" aria-current="page" [routerLink]="link.link" routerLinkActive="active">{{link.label}}</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="link.link" routerLinkActive="active"
+          [hidden]="link.index === 2 && !isAuth ? true : false">
+            {{link.label}}
+          </a>
         </li>
       </ul>
       <!-- Left links -->
@@ -111,7 +114,7 @@
 
         <!-- <app-connexion></app-connexion> -->
 
-        <a name="" id="" [hidden]="isAuth"  class="btn btn-danger" role="button" (click)="SignOut()" > Se deconnecter</a>
+        <a name="" id="" [hidden]="!isAuth"  class="btn btn-danger" role="button" (click)="SignOut()" > Se deconnecter</a>
 
       </div>
 

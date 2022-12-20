@@ -1,7 +1,12 @@
 <br>
 <br>
 
-<h1 class="mx-2">Créer un compte</h1>
+<h1 class="mx-2" *ngIf="!isUpdate; else updateTitle; ">Créer un compte</h1>
+
+<ng-template #updateTitle>
+  <h1 class="mx-2">Modifier les informations personnels</h1>
+</ng-template>
+
 
 <br>
 <br>
@@ -15,23 +20,24 @@
 
 <form class="needs-validation" (ngSubmit)="onSubmit()"  [formGroup]="validationForm" novalidate>
 
+  <input type="text" name="id" id="id" formControlName="id" hidden="true" >
 
   <!-- last name input -->
   <mdb-form-control class="mx-2">
-    <input formControlName="nom" 
-    mdbValidate 
-    required 
-    mdbInput 
-    type="text" 
-    id="nom" 
-    class="form-control"  
+    <input formControlName="nom"
+    mdbValidate
+    required
+    mdbInput
+    type="text"
+    id="nom"
+    class="form-control"
     name="nom"/>
     <label mdbLabel class="form-label" for="nom">Nom*</label>
     <mdb-error
     *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)" >
       Champ obligatoire.
     </mdb-error>
-    
+
   </mdb-form-control>
 
   <br>
@@ -40,11 +46,11 @@
   <!-- first name input -->
   <mdb-form-control class="mx-2">
     <input
-    formControlName="prenom" 
+    formControlName="prenom"
     mdbInput
-    type="text" 
-    id="prenom" 
-    class="form-control" 
+    type="text"
+    id="prenom"
+    class="form-control"
     name="prenom"/>
     <label mdbLabel class="form-label" for="prenom">Prénom</label>
 
@@ -57,12 +63,12 @@
   <mdb-form-control class="mx-2">
     <input
     formControlName="username"
-    mdbValidate 
-    required 
-    mdbInput 
-    type="text" 
-    id="username" 
-    class="form-control" 
+    mdbValidate
+    required
+    mdbInput
+    type="text"
+    id="username"
+    class="form-control"
     name="username"/>
     <label mdbLabel class="form-label" for="username">Nom d'utilisateur*</label>
     <mdb-error
@@ -78,13 +84,13 @@
   <mdb-form-control class="mx-2">
     <input
     formControlName="age"
-    mdbValidate 
-    mdbInput 
-    type="number" 
-    min="0" 
-    value="5" 
-    id="age" 
-    class="form-control" 
+    mdbValidate
+    mdbInput
+    type="number"
+    min="0"
+    value="5"
+    id="age"
+    class="form-control"
     name="age"
     required  />
     <label mdbLabel class="form-label" for="age">Age*</label>
@@ -111,8 +117,9 @@
         name="sexe"
         id="radio_masc"
         value="Masculin"
+        [checked]="validationForm.get('sexe')!.value==='Masculin'"
       />
-      <label class="form-check-label" for="radi_masc"> Masculin </label>
+      <label class="form-check-label" for="radio_masc"> Masculin </label>
     </div>
     <div class="form-check mx-2">
       <input
@@ -123,6 +130,7 @@
         name="sexe"
         id="radio_fem"
         value="Feminin"
+        [checked]="validationForm.get('sexe')!.value==='Feminin'"
 
       />
       <label class="form-check-label" for="radio_fem"> Féminin </label>
@@ -136,7 +144,7 @@
         type="radio"
         name="sexe"
         id="radio_none"
-        [checked]="true"
+        [checked]="validationForm.get('sexe')!.value===null"
         value="Non spécifié"
       />
       <label class="form-check-label" for="radio_none"> Ne pas spécifier </label>
@@ -151,12 +159,12 @@
 
   <!-- address input -->
   <mdb-form-control class="mx-2">
-    <input 
+    <input
     formControlName="adresse"
-    mdbInput 
+    mdbInput
     type="text"
-    id="adresse" 
-    class="form-control" 
+    id="adresse"
+    class="form-control"
     name="adresse"  />
     <label mdbLabel class="form-label" for="adresse">Adresse</label>
   </mdb-form-control>
@@ -168,12 +176,12 @@
   <mdb-form-control class="mx-2">
     <input
     formControlName="email"
-    mdbInput  
+    mdbInput
     mdbValidate
-    type="email" 
-    id="email" 
-    class="form-control" 
-    required 
+    type="email"
+    id="email"
+    class="form-control"
+    required
     name="email"/>
     <label mdbLabel class="form-label" for="email">Email*</label>
     <mdb-error
@@ -199,14 +207,14 @@
 
   <!-- Password input -->
   <mdb-form-control class="mx-2">
-    <input 
+    <input
     formControlName="password"
     mdbValidate
-    mdbInput 
-    type="password" 
-    id="password" 
-    class="form-control" 
-    required 
+    mdbInput
+    type="password"
+    id="password"
+    class="form-control"
+    required
 
     name="password" />
     <label mdbLabel class="form-label" for="password">Mot de passe*</label>
@@ -223,12 +231,12 @@
   <!-- Password input -->
   <mdb-form-control class="mx-2">
     <input
-    formControlName="passConfirm" 
-    mdbInput 
-    type="password" 
-    id="passConfirm" 
-    class="form-control" 
-    required 
+    formControlName="passConfirm"
+    mdbInput
+    type="password"
+    id="passConfirm"
+    class="form-control"
+    required
 
     name="passConfirm"  />
     <label mdbLabel class="form-label" for="passConfirm">Confirmer le mot de passe*</label>
@@ -304,6 +312,11 @@
 
 
   <!-- Submit button -->
-  <button type="submit" [disabled]="validationForm.invalid" class="btn btn-secondary mx-2 mb-1">Créer un compte</button>
+  <button *ngIf="!isUpdate; else updateButton;" type="submit" [disabled]="validationForm.invalid" class="btn btn-secondary mx-2 mb-1">Créer un compte</button>
+
+  <ng-template #updateButton>
+    <button type="submit" [disabled]="validationForm.invalid" class="btn btn-secondary mx-2 mb-1">Valider</button>
+  </ng-template>
+
 </form>
 

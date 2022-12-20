@@ -26,7 +26,7 @@ export class ReservationComponent implements OnInit, OnDestroy {
   isAuth : boolean = false;
 
 
-  constructor(private eventEmitterService: EventEmitterService,private authService : AuthService, private personneService: PersonneService,private reservationService : ReservationService, private modalService : MdbModalService) { }
+  constructor(private eventEmitterService: EventEmitterService,private authService : AuthService, private reservationService : ReservationService, private modalService : MdbModalService) { }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
@@ -36,7 +36,7 @@ export class ReservationComponent implements OnInit, OnDestroy {
     this.isAuth = this.authService.isAuth;
     this.reloadNav();
     this.reservations = [];
-    this.observable = this.reservationService.GetByUser(this.personneService.User.id);
+    this.observable = this.reservationService.GetByUser(this.authService.currentUserId);
     this.sub = this.observable.subscribe(
       data =>
       { this.Response = data;
