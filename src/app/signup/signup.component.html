@@ -12,7 +12,7 @@
 <br>
 
 <div>
-  <label class="lead mx-2">Veuillez entrer les informations requises : <span style="color:red">(*) Champs Obligatoires</span></label>
+  <label class="lead mx-2">Veuillez entrer les informations requises : <span class="text-danger">(*) Champs Obligatoires</span></label>
 </div>
 
 <br>
@@ -23,7 +23,7 @@
   <input type="text" name="id" id="id" formControlName="id" hidden="true" >
 
   <!-- last name input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input formControlName="nom"
     mdbValidate
     required
@@ -40,11 +40,10 @@
 
   </mdb-form-control>
 
-  <br>
-  <br>
+
 
   <!-- first name input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input
     formControlName="prenom"
     mdbInput
@@ -56,11 +55,10 @@
 
   </mdb-form-control>
 
-  <br>
-  <br>
+
 
   <!-- username input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input
     formControlName="username"
     mdbValidate
@@ -77,11 +75,10 @@
     </mdb-error>
   </mdb-form-control>
 
-  <br>
-  <br>
+
 
   <!-- age input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input
     formControlName="age"
     mdbValidate
@@ -100,13 +97,12 @@
     </mdb-error>
   </mdb-form-control>
 
-  <br>
-  <br>
 
 
 
 
-  <fieldset>
+
+  <fieldset class="mb-3">
     <p class="text-muted mx-2">Sexe</p>
     <div class="form-check mx-2">
       <input
@@ -153,12 +149,11 @@
 
 
 
-  <br>
-  <br>
+
 
 
   <!-- address input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input
     formControlName="adresse"
     mdbInput
@@ -169,11 +164,9 @@
     <label mdbLabel class="form-label" for="adresse">Adresse</label>
   </mdb-form-control>
 
-  <br>
-  <br>
 
   <!-- Email input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control *ngIf="!isUpdate" class="mx-2 mb-3">
     <input
     formControlName="email"
     mdbInput
@@ -190,11 +183,10 @@
     </mdb-error>
   </mdb-form-control>
 
-  <br>
-  <br>
+
 
   <!-- tel input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control class="mx-2 mb-3">
     <input
     formControlName="telephone"
     mdbInput type="tel" id="telephone" class="form-control" required name="telephone"/>
@@ -202,11 +194,10 @@
   </mdb-form-control>
 
 
-  <br>
-  <br>
+
 
   <!-- Password input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control *ngIf="!isUpdate" class="mx-2 mb-3">
     <input
     formControlName="password"
     mdbValidate
@@ -224,12 +215,10 @@
     </mdb-error>
   </mdb-form-control>
 
-  <br>
-  <br>
 
 
   <!-- Password input -->
-  <mdb-form-control class="mx-2">
+  <mdb-form-control *ngIf="!isUpdate" class="mx-2 mb-3">
     <input
     formControlName="passConfirm"
     mdbInput
@@ -248,12 +237,11 @@
     </mdb-error>
   </mdb-form-control>
 
-  <br>
-  <br>
+
 
 
   <!-- 2 column grid layout for inline styling -->
-  <div>
+  <div *ngIf="!isUpdate">
     <div class="d-flex flex-column justify-content-between">
       <!-- Checkbox -->
       <div class="form-check mx-2" >
@@ -300,14 +288,14 @@
       </div>
     </div>
 
+    <br>
+
+
+
+
   </div>
 
-  <br>
-  <br>
 
-
-
-  <br>
 
 
 

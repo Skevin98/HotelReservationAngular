@@ -46,6 +46,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { SigninComponent } from './signin/signin.component';
 import { AuthGardService } from './Services/auth-gard.service';
+import { DeleteUserModalComponent } from './delete-user-modal/delete-user-modal.component';
 
 
 
@@ -68,7 +69,8 @@ import { AuthGardService } from './Services/auth-gard.service';
     FooterComponent,
     CategoriesComponent,
     ModalComponent,
-    SigninComponent
+    SigninComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -83,8 +85,8 @@ import { AuthGardService } from './Services/auth-gard.service';
       { path: 'inscription', component: SignupComponent },
       { path: 'categories', component: CategoriesComponent },
       { path:'categories/:id', canActivate:[AuthGardService], component: CreateReservationComponent },
-      { path: 'profil', component: ProfilComponent },
-      { path: 'profil/update', component: SignupComponent },
+      { path: 'profil', canActivate:[AuthGardService], component: ProfilComponent },
+      { path: 'profil/update', canActivate:[AuthGardService], component: SignupComponent },
       { path: '**', redirectTo: '/home' },
 
     ]),

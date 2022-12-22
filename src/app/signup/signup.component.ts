@@ -1,21 +1,22 @@
 import { Observable, Subscription } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, EmailValidator, FormControl, FormGroup, NgForm, PatternValidator, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { PersonneService } from '../Services/personne.service';
 import { Router } from '@angular/router';
 import { Personne } from '../Models/personne';
 import { AuthService } from '../Services/auth.service';
+import { EventEmitterService } from '../Services/event-emitter.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit,  OnChanges {
 
   mdpConfirm: String = "";
 
-  isUpdate : boolean = false;
+  isUpdate: boolean = false;
 
   validationForm: FormGroup;
 
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthService) {
 
     this.validationForm = new FormGroup({
-      id : new FormControl(),
+      id: new FormControl(),
       nom: new FormControl(null, Validators.required),
       prenom: new FormControl(),
       username: new FormControl(null, Validators.required),
@@ -49,8 +50,7 @@ export class SignupComponent implements OnInit {
 
 
   }
-
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.authService.currentUser.id != "") {
       this.isUpdate = true;
       this.currentUser = this.authService.currentUser;
@@ -61,27 +61,50 @@ export class SignupComponent implements OnInit {
       this.age = this.currentUser.age;
       this.email = this.currentUser.email;
       this.sexe = this.currentUser.sexe;
+      this.password = this.currentUser.password;
+      this.passConfirm = this.currentUser.password;
       this.validationForm.controls['adresse'].setValue(this.currentUser.adresse);
       this.validationForm.controls['telephone'].setValue(this.currentUser.telephone);
+    }
+
+  }
+
+  ngOnInit(): void {
+
+    if (this.authService.currentUser.id != "") {
+      this.isUpdate = true;
+      this.currentUser = this.authService.currentUser;
+      this.id = this.currentUser.id;
+      this.nom = this.currentUser.nom;
+      this.validationForm.controls['prenom'].setValue(this.currentUser.prenom);
+      this.username = this.currentUser.username;
+      this.age = this.currentUser.age;
+      this.email = this.currentUser.email;
+      this.sexe = this.currentUser.sexe;
+      this.password = this.currentUser.password;
+      this.passConfirm = this.currentUser.password;
+      this.validationForm.controls['adresse'].setValue(this.currentUser.adresse);
+      this.validationForm.controls['telephone'].setValue(this.currentUser.telephone);
+      this.validationForm.controls['security'].setValue(true);
     }
   }
 
 
-  get id(): any{
+  get id(): any {
     // return this.validationForm.get('nom');
     return this.validationForm.controls['id'].value;
   }
 
-  set id(n : string){
+  set id(n: string) {
     this.validationForm.get('id')?.setValue(n);
   }
 
-  get nom(): any{
+  get nom(): any {
     // return this.validationForm.get('nom');
     return this.validationForm.controls['nom'].value;
   }
 
-  set nom(n : string){
+  set nom(n: string) {
     this.validationForm.get('nom')?.setValue(n);
   }
 
@@ -89,7 +112,7 @@ export class SignupComponent implements OnInit {
     return this.validationForm.controls['username'].value;
   }
 
-  set username(n : string){
+  set username(n: string) {
     this.validationForm.get('username')?.setValue(n);
   }
 
@@ -97,7 +120,7 @@ export class SignupComponent implements OnInit {
     return this.validationForm.controls['age'].value;
   }
 
-  set age(n : number){
+  set age(n: number) {
     this.validationForm.get('age')?.setValue(n);
   }
 
@@ -105,7 +128,7 @@ export class SignupComponent implements OnInit {
     return this.validationForm.controls['email'].value;
   }
 
-  set email(n : string){
+  set email(n: string) {
     this.validationForm.get('email')?.setValue(n);
   }
 
@@ -113,19 +136,25 @@ export class SignupComponent implements OnInit {
     return this.validationForm.controls['password'].value;
   }
 
-  set password(n : string){
-    this.validationForm.get('age')?.setValue(n);
+  set password(n: string) {
+    this.validationForm.get('password')?.setValue(n);
   }
 
   get passConfirm(): any {
     return this.validationForm.controls['passConfirm'].value;
   }
 
+  set passConfirm(n: string) {
+    this.validationForm.get('passConfirm')?.setValue(n);
+  }
+
+
+
   get sexe(): any {
     return this.validationForm.controls['sexe'].value;
   }
 
-  set sexe(n : string){
+  set sexe(n: string) {
     this.validationForm.get('sexe')?.setValue(n);
   }
 
@@ -146,13 +175,25 @@ export class SignupComponent implements OnInit {
       delete u.security;
       //console.log(u);
 
+      if (this.isUpdate && u.id !== null) {
+        this.personneService.Update(u.id, u)
+          .subscribe().add(() => {
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/profil']);
+            })
+          });
 
-      this.personneService.AddUser(u)
-        .subscribe().add(() => {
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/profil']);
-          })
-        });
+      }
+      else {
+        this.personneService.AddUser(u)
+          .subscribe().add(() => {
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/profil']);
+            })
+          });
+
+      }
+
     }
 
 

@@ -46,4 +46,8 @@ export class PersonneService {
     return this.http.get<object>(this.baseUrl);
   }
 
+  Update(id : string, user : object):Observable<object>{
+    return this.http.put<object>(this.baseUrl+`/`+id, user );
+  }
+
 }

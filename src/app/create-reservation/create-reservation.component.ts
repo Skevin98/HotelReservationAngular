@@ -10,6 +10,7 @@ import { formatDate } from '@angular/common';
 import { Categorie } from '../Models/categorie';
 import { CategorieService } from '../Services/categorie.service';
 import { PersonneService } from '../Services/personne.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-create-reservation',
@@ -54,7 +55,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
   subRes : Subscription = new Subscription();
 
-  constructor(private personneService : PersonneService,
+  constructor(private authService : AuthService,
     private categorieService : CategorieService ,
     private chambreService : ChambreService,
     private reservationService : ReservationService,
@@ -65,7 +66,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.Reservation.personneID = this.personneService.User.id;
+    this.Reservation.personneID = this.authService.currentUser.id;
     this.observable = this.chambreService.GetByCat(this.idCat);
     this.sub = this.observable.subscribe(
       data =>

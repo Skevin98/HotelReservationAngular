@@ -3,10 +3,10 @@ export class Personne {
 
   constructor() {
 
-	}
+  }
 
 
-    private _id: string = "";
+  private _id: string = "";
   public get id(): string {
     return this._id;
   }
@@ -16,20 +16,20 @@ export class Personne {
 
 
 
-  private _idFirebaseUser : string="";
-  public get idFirebaseUser() : string {
+  private _idFirebaseUser: string = "";
+  public get idFirebaseUser(): string {
     return this._idFirebaseUser;
   }
-  public set idFirebaseUser(v : string) {
+  public set idFirebaseUser(v: string) {
     this._idFirebaseUser = v;
   }
 
 
-  private _username : string="";
-  public get username() : string {
+  private _username: string = "";
+  public get username(): string {
     return this._username;
   }
-  public set username(v : string) {
+  public set username(v: string) {
     this._username = v;
   }
 
@@ -41,7 +41,7 @@ export class Personne {
     this._password = value;
   }
 
-    private _nom: string = "";
+  private _nom: string = "";
   public get nom(): string {
     return this._nom;
   }
@@ -49,7 +49,7 @@ export class Personne {
     this._nom = value;
   }
 
-    private _prenom: string = "";
+  private _prenom: string = "";
   public get prenom(): string {
     return this._prenom;
   }
@@ -65,7 +65,7 @@ export class Personne {
     this._adresse = value;
   }
 
-    private _email: string = "";
+  private _email: string = "";
   public get email(): string {
     return this._email;
   }
@@ -73,7 +73,7 @@ export class Personne {
     this._email = value;
   }
 
-    private _telephone: string = "";
+  private _telephone: string = "";
   public get telephone(): string {
     return this._telephone;
   }
@@ -97,7 +97,7 @@ export class Personne {
     this._sexe = value;
   }
 
-    private _privilege: string = "User";
+  private _privilege: string = "User";
   public get privilege(): string {
     return this._privilege;
   }
