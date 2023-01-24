@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit, OnDestroy{
 
   Categories : Categorie[] = [];
 
-  test : Array<any> = new Array(4);
+ 
 
   observable: Observable<object> = new Observable<Object>();
 
