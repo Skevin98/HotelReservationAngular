@@ -185,8 +185,11 @@ export class SignupComponent implements OnInit,  OnChanges {
 
       }
       else {
+        delete u.id;
         this.personneService.AddUser(u)
-          .subscribe().add(() => {
+          .subscribe({
+            error : (err) => {console.log(err);},
+          }).add(() => {
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
               this.router.navigate(['/profil']);
             })

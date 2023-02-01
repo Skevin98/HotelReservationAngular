@@ -19,6 +19,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.autService.initialize();
     console.log("init")
     this.reloadNav();
   }

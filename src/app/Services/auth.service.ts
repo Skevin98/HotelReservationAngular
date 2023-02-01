@@ -23,9 +23,7 @@ export class AuthService {
 
 
   constructor(private router : Router, private personneService : PersonneService) {
-    personneService.GetAll()
-    .subscribe(data=>{this.Response = data})
-    .add(() => this.loadUsers());
+    this.initialize();
 
    }
 
@@ -39,6 +37,13 @@ export class AuthService {
         resolve(true);
     }, 2000);
     })
+  }
+
+
+  initialize(){
+    this.personneService.GetAll()
+    .subscribe(data=>{this.Response = data})
+    .add(() => this.loadUsers());
   }
 
   signOut(){
